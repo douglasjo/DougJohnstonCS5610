@@ -4,24 +4,28 @@
         .controller("FormsController", FormsController);
     function FormsController($scope) {
         ///inject FormService
-        var myforms = findAllFormsForUser(???UserId, ???);
+        var myforms = findAllFormsForUser($scope.userId, "some callback");
 
         ///make forms available for view to render
 
+
+
         function addForm() {
-            createFormForUser();
+            createFormForUser($scope.userId, $scope.form, "some callback");
         }
 
         function updateForm() {
-            updateFormById("formid from here", "userid from here", "some callback");
+            updateFormById($scope.formId, $scope.userId, "some callback");
         }
 
         function deleteForm() {
-            deleteFormById("formid from here", "some callback");
+            deleteFormById($scope.formId, "some callback");
         }
 
         function selectForm() {
 
         }
+
+
     }
 })();

@@ -11,16 +11,16 @@ function (){
 
             {"_id": "010", "title": "ToDo",     "userId": 123},
 
-            {"_id": "020", "title": "CDs",      "userId": 234},
+            {"_id": "020", "title": "CDs",      "userId": 234}
 
-        ]
+        ];
 
         function createFormForUser(userId, form, callback) {
             var newForm = {
                 _id: form._id,
                 title: form.title,
                 userId: userId
-            }
+            };
             forms.push(newForm);
             callback();
         }
@@ -41,8 +41,8 @@ function (){
                 return (form.id == formId);
             }
             var sheet = forms.find(getById);
-            $scope.forms.splice(index,1);
-            callback();
+
+            callback($scope.forms.splice(index,1)); ///trying this callback approach
         }
 
         function updateFormById(formId, newForm, callback) {
@@ -55,7 +55,7 @@ function (){
                 _id: newForm._id,
                 title: newForm.title,
                 userId: newForm.userId
-            }
+            };
             callback();
         }
     }

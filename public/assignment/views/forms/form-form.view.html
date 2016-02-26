@@ -9,8 +9,6 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-
-
     <title>Forms</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -35,7 +33,8 @@
 </head>
 
 <body>
-<table id="table1" class="table table-responsive table-striped table-bordered">
+<table id="table1" class="table table-responsive table-striped table-bordered"
+ng-controller="Form-FormController">
     <thead>
     <tr>
         <th>Form Name</th>
@@ -53,8 +52,10 @@
                 <span class="glyphicon glyphicon-ok"></span></button>
         </td>
     </tr>
-    <tr>
-        <td>Registration Form</td>
+    <tbody>
+    <tr>{{forms}}</tr>
+    <tr ng-repeat="td_form in forms">
+        <td>{{td_form.title}}</td>
         <td>
             <button class="btn btn-default" type="submit" ng-click="deleteForm()">
                 <span class="glyphicon glyphicon-remove"></span></button>
@@ -62,26 +63,8 @@
                 <span class="glyphicon glyphicon-pencil"></span></button>
         </td>
     </tr>
-    <tr>
-        <td>Contact List</td>
-        <td>
-            <button class="btn btn-default" type="submit" ng-click="deleteForm()">
-                <span class="glyphicon glyphicon-remove"></span></button>
-            <button class="btn btn-default" type="submit" ng-click="selectForm()">
-                <span class="glyphicon glyphicon-pencil"></span></button>
-        </td>
-    </tr>
-    <tr>
-        <td>To Do List</td>
-        <td>
-            <button class="btn btn-default" type="submit" ng-click="deleteForm()">
-                <span class="glyphicon glyphicon-remove"></span></button>
-            <button class="btn btn-default" type="submit" ng-click="selectForm()">
-                <span class="glyphicon glyphicon-pencil"></span></button>
-        </td>
-    </tr>
+    </tbody>
 </table>
-
 
 
 <!-- Bootstrap core JavaScript
