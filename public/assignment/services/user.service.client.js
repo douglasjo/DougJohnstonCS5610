@@ -1,37 +1,75 @@
-
-function() {
+(function() {
     angular
-        .module(app);
+        .module("FormBuilderApp")
         .factory("UserService", UserService);
-
 
     function UserService() {
         var users = [];
         users = [
-            {"_id": 123, "firstName": "Alice", "lastName": "Wonderland", "username": "alice", "password": "alice"},
-
-            {"_id": 234, "firstName": "Bob", "lastName": "Hope", "username": "bob", "password": "bob"},
-
-            {"_id": 345, "firstName": "Charlie", "lastName": "Brown", "username": "charlie", "password": "charlie"},
-
-            {"_id": 456, "firstName": "Dan", "lastName": "Craig", "username": "dan", "password": "dan"},
-
-            {"_id": 567, "firstName": "Edward", "lastName": "Norton", "username": "ed", "password": "ed"}
-
+            {        "_id":123, "firstName":"Alice",            "lastName":"Wonderland",
+                "username":"alice",  "password":"alice",   "roles": ["student"], "email": "alice@gmail.com"},
+            {        "_id":234, "firstName":"Bob",              "lastName":"Hope",
+                "username":"bob",    "password":"bob",     "roles": ["admin"], "email": "bob@gmail.com"},
+            {        "_id":345, "firstName":"Charlie",          "lastName":"Brown",
+                "username":"charlie","password":"charlie", "roles": ["faculty"], "email": "charliee@gmail.com"},
+            {        "_id":456, "firstName":"Dan",              "lastName":"Craig",
+                "username":"dan",    "password":"dan",     "roles": ["faculty", "admin"], "email": "dan@gmail.com"},
+            {        "_id":567, "firstName":"Edward",           "lastName":"Norton",
+                "username":"ed",     "password":"ed",      "roles": ["student"], "email": "ed@gmail.com"}
         ];
-
-
-        function findUserByUsernameAndPassword(username, password, callback) {
-            function match(user) {
-                return (user._id == username && user.password == password);
+/*
+        var loggedIn = {};
+        var isLoggedIn = false;
+        var adminPriv = false;
+        function logIn(person){
+            loggedIn = {
+                _id: person._id,
+                firstName: person.firstName,
+                lastName: person.lastName,
+                username: person.username,
+                password: person.password,
+                email: person.email
             }
-            var result = users.find(match);
-            callback(result);
+            isLoggedIn = true;
+            if (hasRole(person, "admin")) {
+                adminpriv = true;
+            }
         }
 
+        function logOut() {
+            loggedIn = [];
+            isLoggedIn = false;
+            adminPriv = false;
+        }
+        */
+
+        function getUserById(userId) {
+            function sameId(user) {
+                return (user.id == userId);
+            }
+            return users.find(sameId);
+        }
+
+        function hasRole(user, role) {
+            function matchRole(string) {
+                return string == role;
+            }
+            user.roles.find(matchRole)
+        }
+
+        function findUserByCredentials(username, password, callback) {
+            function matchByNameAndPassword(user) {
+                return (user._id == username && user.password == password);
+            }
+            var result = users.find(matchByNameAndPassword);
+            if (result == null) {
+                return result;
+            } else callback(result);
+        }
+
+
         function findAllUsers(callback) {
-            return users;
-            callback($scope.users);
+            callback(users);
         }
 
         function createUser(user, callback) {
@@ -40,38 +78,32 @@ function() {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 username: user.username,
-                password: user.password
+                password: user.password,
+                email: user.email
             };
             users.push(person);
-            callback();
+            callback(person);
         }
 
         function deleteUserById(userId, callback) {
-            function getById(user) {
-                return (user.id == userId);
-            }
-
-            var person = users.find(getById);
+            var person = getUserById(userId);
             var index = users.indexOf(person);
             $scope.users.splice(index, 1);
-            callback();
+            callback(users);
         }
 
         function updateUser(userId, user, callback) {
-            function getById(user) {
-                return (user.id == userId);
-            }
-
-            var person = $scope.users.find(getById);
-            var index = $scope.users.indexOf(person);
-            $scope.users[index] = {
+            var person = getUserById(userId)
+            var index = users.indexOf(person);
+            users[index] = {
                 _id: user._id,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 username: user.username,
-                password: user.password
-            }
+                password: user.password,
+                email: user.email
+            };
             callback(user);
         }
     }
-}
+})();

@@ -1,6 +1,6 @@
-function (){
+(function (){
     angular
-        .module(app);
+        .module("FormBuilderApp")
         .factory("FormServices", FormService);
 
     function FormService($scope, $route, $controller) {
@@ -22,7 +22,7 @@ function (){
                 userId: userId
             };
             forms.push(newForm);
-            callback();
+            callback(newForm);
         }
 
         function findAllFormsForUser(userId, callback) {
@@ -36,29 +36,31 @@ function (){
             callback(result);
         }
 
-        function deleteFormById(formId, callback) {
-            function getById(form){
+        function getFormById(id) {
+            function matchId(form){
                 return (form.id == formId);
             }
-            var sheet = forms.find(getById);
+            return forms.find(matchId);
+        }
 
-            callback($scope.forms.splice(index,1)); ///trying this callback approach
+        function deleteFormById(formId, callback) {
+            var sheet = getFormById(formId);
+            var index = $scope.forms.indexOf(sheet);
+            forms.splice(index, 1);
+            callback(forms);
         }
 
         function updateFormById(formId, newForm, callback) {
-            function getById(form){
-                return (form.id == formId);
-            }
-            var sheet = $scope.forms.find(getbyid);
+            var sheet = getFormById(formId);
             var index = $scope.forms.indexOf(sheet);
             $scope.forms[index] = {
                 _id: newForm._id,
                 title: newForm.title,
                 userId: newForm.userId
             };
-            callback();
+            callback(newForm);
         }
     }
-}
+})();
 
 
