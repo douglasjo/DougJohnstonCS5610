@@ -11,13 +11,13 @@
             <h1 class="page-header">Forms</h1>
             <label for="table1">
                 <ul class="nav nav-tabs" ng-init>
-                    <li ng-click="showFields=false"><a>Forms</a></li>
-                    <li ng-click="showFields=true"><a>Fields</a></li>
+                    <li ng-click="$showFields=false"><a>Forms</a></li>
+                    <li ng-click="$showFields=true"><a>Fields</a></li>
                 </ul>
             </label>
 
             <table id="table1" class="table table-responsive table-striped table-bordered"
-            ng-hide="showFields">
+            ng-hide="$showFields">
                 <thead>
                 <tr>
                     <th>Form Name</th>

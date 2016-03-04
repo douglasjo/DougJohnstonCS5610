@@ -2,10 +2,12 @@
     angular
         .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
-    function ProfileController($scope, $rootScope, UserService) {
+    function ProfileController($scope, $rootScope, UserService, $currentUser) {
+
 
         $scope.display = function() {
-            $scope.firstName = "joe" ;//person.firstName;
+            var firstname = "joe";
+            $scope.firstName = firstname ;//person.firstName;
             $scope.lastName = "tim"  ;//person.lastName;
             $scope.username = "bob"; //person.username;
             $scope.password = "thing";// person.password;

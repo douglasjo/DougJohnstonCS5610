@@ -17,9 +17,9 @@
             {        "_id":567, "firstName":"Edward",           "lastName":"Norton",
                 "username":"ed",     "password":"ed",      "roles": ["student"], "email": "ed@gmail.com"}
         ];
-/*
-        var loggedIn = {};
-        var isLoggedIn = false;
+
+        var $loggedIn = {};
+        var $isLoggedIn = true;
         var adminPriv = false;
         function logIn(person){
             loggedIn = {
@@ -41,7 +41,7 @@
             isLoggedIn = false;
             adminPriv = false;
         }
-        */
+
 
         function getUserById(userId) {
             function sameId(user) {

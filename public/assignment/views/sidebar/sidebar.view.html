@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>login</title>
-</head>
-
-<body>
-<div class="container-fluid" ng-controller="SidebarController">
-<div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav  nav-sidebar">
-            <li >
-                <a href="#/home" ng-class="{'active' : $location.url().indexOf('home'!= -1)}">Home</a></li>
-            <li ng-show="isLoggedIn" ng-class="{'active' : $location.url() == '/profile'}">
-                <a href="#/profile"  >Profile</a></li>
-            <li ng-show="adminPriv">
-                <a href="#/admin" ng-class="{'active' : $location.url() == '/admin'}">Admin</a></li>
-            <li ng-show="isLoggedIn">
-                <a href="#/forms" ng-class="{'active' : $location.url() == '/forms'}">Forms</a></li>
-        </ul>
+{{$isLoggedIn}}
+{{$currentUser.firstName}}
+<nav class="container-fluid navbar" ng-controller="SidebarController">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 .sidebar">
+            <ul class="nav .navbar-nav .nav-sidebar sidebar-nav">
+                <li ng-class="{'active' : $location.url().indexOf('home'!= -1)}">
+                    <a href="#/home" >Home</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="$isLoggedIn">
+                    <a href="#/profile" >Profile</a></li>
+                <li ng-show="$adminPriv">
+                    <a href="#/admin" ng-class="{'active' : $location.url() == '/admin'}">Admin</a></li>
+                <li ng-show="$isLoggedIn">
+                    <a href="#/forms" ng-class="{'active' : $location.url() == '/forms'}">Forms</a></li>
+            </ul>
+        </div>
     </div>
-</div>
-</div>
-</body>
-</html>
+</nav>
+

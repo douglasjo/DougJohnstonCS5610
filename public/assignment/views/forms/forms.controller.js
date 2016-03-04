@@ -5,7 +5,7 @@
     function FormsController($scope, $FormService) {
         ///inject FormService
 
-        $scope.showFields=false;
+        $scope.$showFields=true;
 
         $scope.myForms= findAllFormsForUser($scope.userId, $scope.findAllCall);
 

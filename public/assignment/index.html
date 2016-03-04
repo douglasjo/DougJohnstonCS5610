@@ -11,7 +11,7 @@
 
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src = "dashboard.css"></script>
+    <script src = "dashboard.css" rel="stylesheet"></script>
 
     <script src="views/main/main.controller.js"></script>
     <script src="views/home/home.controller.js"></script>
@@ -26,8 +26,10 @@
     <script src="views/forms/forms.controller.js"></script>
     <script src="views/fields/form-field.controller.js"></script>
 
-    <script src="../services/forms.service.client.js"></script>
-    <script src="../services/user.service.client.js"></script>
+    <script src="services/forms.service.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
+    <script src="css/styles.css" rel="stylesheet"></script>
 
 </head>
 
@@ -36,8 +38,7 @@
     <h2>ng-include Example</h2>
     <div ng-include src="'views/header/header.view.html'"></div>
     <div ng-include src="'views/sidebar/sidebar.view.html'"></div>
-    <div ng-view>
-    </div>
+    <div ng-view></div>
     {{$location.url()}}
 </div>
 </body>
