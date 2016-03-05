@@ -1,8 +1,9 @@
 (function() {
     angular
         .module("FormBuilderApp")
+        .service("UserService")
         .controller("LoginController", LoginController);
-    function LoginController($scope, $rootScope, $route, UserService) {
+    function LoginController($scope, $rootScope, $route) {
         function nav(response){
             if (response == null) {
                 alert("not a valid password/username combination");

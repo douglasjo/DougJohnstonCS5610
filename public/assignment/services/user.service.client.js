@@ -18,29 +18,8 @@
                 "username":"ed",     "password":"ed",      "roles": ["student"], "email": "ed@gmail.com"}
         ];
 
-        var $loggedIn = {};
-        var $isLoggedIn = true;
-        var adminPriv = false;
-        function logIn(person){
-            loggedIn = {
-                _id: person._id,
-                firstName: person.firstName,
-                lastName: person.lastName,
-                username: person.username,
-                password: person.password,
-                email: person.email
-            }
-            isLoggedIn = true;
-            if (hasRole(person, "admin")) {
-                adminpriv = true;
-            }
-        }
 
-        function logOut() {
-            loggedIn = [];
-            isLoggedIn = false;
-            adminPriv = false;
-        }
+
 
 
         function getUserById(userId) {

@@ -3,29 +3,13 @@
         .module("FormBuilderApp")
         .controller("HeaderController", HeaderController);
     function HeaderController($scope, $rootScope) {
-        $scope.logout = function(){
+        $scope.lorem = "hooked up";
 
-            $scope.$isLoggedIn.status = false;
-            $scope.$adminPriv.status = false;
-            $scope.$holder.status = false;
-            $scope.$currentUser.user = {};
-
-        }
+        $scope.logOut = function(){
+            $scope.lorem="function called";
+            $rootScope.isLoggedIn = false;
+            $rootScope.adminPriv = false;
+            $rootScope.currentUser = {};
+        };
     }
 })();
-
-/*
-(function(){
-    angular
-        .module("FormBuilderApp")
-        .service("UserService")
-        .controller("HeaderController", HeaderController);
-    function HeaderController($scope, $location, $route) {
-        $scope.logout = function() {
-            $scope.$adminPriv= false;
-            $scope.$isLoggedIn = false;
-            $scope.$currentUser = {};
-        }
-    }
-})();
-    */

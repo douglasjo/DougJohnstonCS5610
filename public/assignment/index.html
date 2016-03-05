@@ -11,10 +11,11 @@
 
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src = "dashboard.css" rel="stylesheet"></script>
+    <link href="dashboard.css" rel="stylesheet">
 
     <script src="views/main/main.controller.js"></script>
     <script src="views/home/home.controller.js"></script>
+
     <script src="views/users/login.controller.js"></script>
     <script src="views/users/profile.controller.js"></script>
     <script src="views/users/register.controller.js"></script>
@@ -29,12 +30,12 @@
     <script src="services/forms.service.client.js"></script>
     <script src="services/user.service.client.js"></script>
 
-    <script src="css/styles.css" rel="stylesheet"></script>
-
 </head>
 
 <body>
 <div class="container" ng-controller="MainController">
+    index login: {{isLoggedIn}}
+    index admin: {{adminPriv}}
     <h2>ng-include Example</h2>
     <div ng-include src="'views/header/header.view.html'"></div>
     <div ng-include src="'views/sidebar/sidebar.view.html'"></div>

@@ -1,22 +1,22 @@
-{{lorem}}
-{{$isLoggedIn}}
-{{$currentUser.firstName}}
-{{$holder.status}}
+header login: {{isLoggedIn}}
+header admin: {{adminPriv}}
+
 <nav class= "container-fluid navbar .top" ng-controller="HeaderController">
+    header lorem: {{lorem}}
     <div class="navbar-header">
         <a class="navbar-brand" href="#">Form Maker</a>
     </div>
     <ul class="nav .navbar-nav .navbar-right  nav-pills">
-        <li ng-class="{'active' : $location.url().indexOf('register') !=-1}" ng-hide="$isLoggedIn" >
+        <li ng-class="{'active' : $location.url().indexOf('register') !=-1}" ng-hide="isLoggedIn" >
             <a href="#/register" >Register </a></li>
-        <li ng-class="{'active' : $location.url().indexOf('login') !=-1 }" ng-hide="$isLoggedIn">
+        <li ng-class="{'active' : $location.url().indexOf('login') !=-1 }" ng-hide="isLoggedIn">
             <a href="#/login">Login</a></li>
-        <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="$isLoggedIn">
+        <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="isLoggedIn">
             <a href="#/profile" >Profile</a></li>
-        <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="$adminPriv">
+        <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="adminPriv">
             <a href="#/admin" >Admin</a></li>
-        <li ng-class="{'active' : $location.url().indexOf('logout') !=-1 }" ng-show="$isLoggedIn">
-            <a href="#/home" ng-onlick="logOut()">Logout</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('logout') !=-1 }" ng-show="isLoggedIn">
+            <a href="#/home" ng-click="logOut()">Logout</a></li>
     </ul>
 </nav>
 

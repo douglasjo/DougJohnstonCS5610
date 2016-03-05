@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="FormBuilderApp">
+<html lang="en">
 <head>
     <title>Forms</title>
 </head>
@@ -38,8 +38,8 @@
                 </tr>
 
                 <tbody>
-                <tr>{{someForms}}</tr>
-                <tr ng-repeat="td_form in someForms">
+                <tr>{{myForms}}</tr>
+                <tr ng-repeat="td_form in myForms">
                     <td>{{td_form.title}}</td>
                     <td>
                         <button class="btn btn-default" type="submit" ng-click="deleteForm()">
