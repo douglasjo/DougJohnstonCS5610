@@ -19,11 +19,11 @@
         return {
             forms: forms,
 
-            fakeCallback: function (response){
+            fakeCallback: function(response){
                 return response;
             },
 
-            createFormForUser: function (userId, form, callback) {
+            createFormForUser: function(userId, form, callback) {
                 var newForm = {
                     _id: form._id,
                     title: form.title,

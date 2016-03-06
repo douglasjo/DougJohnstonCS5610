@@ -4,21 +4,15 @@
         .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
     function ProfileController($scope, $rootScope, UserService) {
-        console.log($rootScope.currentUser.username);
+        var users = UserService.users;
         $scope.username = $rootScope.currentUser.username;
         $scope.password = $rootScope.currentUser.password;
         $scope.firstName = $rootScope.currentUser.firstName;
         $scope.lastName = $rootScope.currentUser.lastName;
         $scope.email = $rootScope.currentUser.email;
 
-        var users = UserService.users;
-
         $scope.updateLogin = function(person) {
             $rootScope.currentUser = person;
-            console.log("updateLogin");
-            console.log(person);
-            console.log($rootScope.currentUser);
-
         };
 
 

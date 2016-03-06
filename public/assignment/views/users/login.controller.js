@@ -4,12 +4,10 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
     function LoginController($scope, $rootScope, $location, UserService) {
-        //var users = UserService.users;
-        function nav(response){
+        function nav(response) {
             if (response == null) {
                 alert("not a valid password/username combination");
             } else {
-                //console.log(response);
                 $rootScope.currentUser=response;
                 $rootScope.isLoggedIn = true;
                 if (UserService.hasRole(response, "admin")) {
@@ -19,10 +17,7 @@
             }
         }
 
-        $scope.login = function(){
-            //console.log("login called");
-            //console.log("username: " + $scope.username);
-            //console.log("password: " + $scope.password);
+        $scope.login = function() {
             UserService.findUserByCredentials($scope.username, $scope.password, nav);
         }
     }

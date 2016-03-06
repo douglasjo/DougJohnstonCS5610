@@ -9,7 +9,6 @@
         $scope.selectedForm= {};
         $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,
             (function (response) {return response}));
-        $scope.allForms= FormService.forms;
 
         $scope.addForm = function() {
             var newForm = {
@@ -17,7 +16,6 @@
                 "userId": $rootScope.currentUser._id,
                 "_id": (new Date).getTime()
             };
-
             FormService.createFormForUser($rootScope.currentUser._id, newForm, FormService.fakeCallback);
 
             $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,

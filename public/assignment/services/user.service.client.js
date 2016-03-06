@@ -23,53 +23,43 @@
 
             users: users,
 
-            fakeCallback: function (response){
-                //console.log("from fakeCallback: " + response);
+            fakeCallback: function(response){
                 return response;
             },
 
-            getUserById: function (userId) {
+            getUserById: function(userId) {
                 function sameId(user) {
                     return (user.id == userId);
                 }
                 return users.find(sameId);
             },
 
-            hasRole: function (user, role) {
+            hasRole: function(user, role) {
                 if (user.roles == null) {
                     return null;
                 } else {
                     function matchRole(string) {
-                        //console.log("checking: " + string);
-                        //console.log("role: " + role);
                         return string == role;
                     }
                 }
-
                 return user.roles.find(matchRole);
             },
 
-            findUserByCredentials: function (username, password, callback) {
+            findUserByCredentials: function(username, password, callback) {
                 function matchByNameAndPassword(user) {
-                    console.log("user.username= " + user.username);
-                    console.log("username= " + username);
-                    console.log("user.password= " + user.password);
-                    console.log("password= " + password);
                     return (user.username == username && user.password == password);
                 }
-
                 var result = users.find(matchByNameAndPassword);
                 if (result == null) {
-                    console.log("user is null");
                     return result;
                 } else callback(result);
             },
 
-            findAllUsers: function (callback) {
+            findAllUsers: function(callback) {
                 callback(users);
             },
 
-            createUser: function (user, callback) {
+            createUser: function(user, callback) {
                 var person = {
                     _id: user._id,
                     firstName: user.firstName,
@@ -82,22 +72,20 @@
                 callback(person);
             },
 
-            deleteUserById: function (userId, callback) {
+            deleteUserById: function(userId, callback) {
                 function sameId(user) {
                     return (user.id == userId);
                 }
-
                 var person = users.find(sameId);
                 var index = users.indexOf(person);
                 $scope.users.splice(index, 1);
                 callback(users);
             },
 
-            updateUser: function (userId, user, callback) {
+            updateUser: function(userId, user, callback) {
                 function sameId(user) {
                     return (user.id == userId);
                 }
-
                 var person = users.find(sameId);
                 var index = users.indexOf(person);
                 users[index] = {

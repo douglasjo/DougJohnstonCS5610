@@ -6,9 +6,7 @@
         .controller("RegisterController", RegisterController);
     function RegisterController($scope, $rootScope, $location, UserService) {
 
-        var users = UserService.users;
-
-        function regNav (person) {
+        function regNav(person) {
             $rootScope.currentUser=person;
             $rootScope.isLoggedIn = true;
             if (UserService.hasRole(person, "admin")) {
@@ -17,7 +15,7 @@
             $location.path('/profile');
         }
 
-        $scope.register = function () {
+        $scope.register = function() {
             if ($scope.password != $scope.verify) {
                 alert("passwords do not match");
             } else {
