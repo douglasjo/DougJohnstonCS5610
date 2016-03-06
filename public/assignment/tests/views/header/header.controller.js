@@ -1,8 +1,0 @@
-(function(){
-    angular
-        .module("FormBuilderApp")
-        .controller("HeaderController", HeaderController);
-    function HeaderController($scope, $location, $route, $UserService) {
-
-    }
-})();
