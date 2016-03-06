@@ -1,3 +1,4 @@
+"use strict";
 (function(){
     angular
         .module("FormBuilderApp")
@@ -6,8 +7,6 @@
     function RegisterController($scope, $rootScope, $location, UserService) {
 
         var users = UserService.users;
-        //users = UserService.findAllUsers(UserService.fakeCallback);
-        //console.log(users);
 
         function regNav (person) {
             $rootScope.currentUser=person;
@@ -16,9 +15,6 @@
                 $rootScope.adminPriv = true;
             }
             $location.path('/profile');
-            //console.log($location);
-            //console.log("regNav");
-
         }
 
         $scope.register = function () {
@@ -34,10 +30,7 @@
                     "roles": [],
                     "email": $scope.email
                 };
-                //console.log("register");
-                //console.log("user= "+ person);
                 UserService.createUser(person, regNav);
-                //console.log("rootscope= " + $rootScope.currentUser.username);
             }
         }
     }

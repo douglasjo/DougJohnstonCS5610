@@ -1,18 +1,9 @@
 
-
-header login: {{isLoggedIn}}
-header admin: {{adminPriv}}
-header username: {{currentUser.username}}
-header password: {{currentUser.password}}
-header firstName: {{currentUser.firstName}}
-header lastname: {{currentUser.lastName}}
-header email: {{currentUser.email}}
-
 <nav class= "container-fluid navbar .top" ng-controller="HeaderController">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">Form Maker</a>
     </div>
-    <ul class="nav .navbar-nav .navbar-right  nav-pills">
+    <ul class="nav .navbar-nav .navbar-right  nav-pills pull-right">
         <li ng-class="{'active' : $location.url().indexOf('register') !=-1}" ng-hide="isLoggedIn" >
             <a href="#/register" >Register </a></li>
         <li ng-class="{'active' : $location.url().indexOf('login') !=-1 }" ng-hide="isLoggedIn">

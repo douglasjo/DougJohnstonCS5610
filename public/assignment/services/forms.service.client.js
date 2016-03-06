@@ -1,3 +1,4 @@
+"use strict";
 (function (){
     angular
         .module("FormBuilderApp")
@@ -44,15 +45,10 @@
                 function addToResult(form) {
                     if (form.userId == userId) {
                         result.push(form);
-                        //console.log("id passes: " + form.userId);
-                        //console.log(form);
-                        //console.log("length is" + result.length);
                     }
                 }
                 forms.forEach(addToResult);
-                //console.log("result = " + result);
                 return result;
-                //callback(result);
             },
 
             getFormById: function (id) {
@@ -63,23 +59,13 @@
             },
 
             deleteFormById: function (formId, callback) {
-                function getFormById(id) {
-                    function matchId(form) {
-                        console.log("checking: " + form.id);
-                        console.log("against: " + formId);
-                        return (form.id == formId);
+                function checkDelete(form) {
+                    if (formId == form._id) {
+                        var index = forms.indexOf(form);
+                        forms.splice(index, 1);
                     }
-                    console.log("forms are: " + forms);
-                    var holder = forms.find(matchId);
-                    console.log("holder= " + holder);
-                    return forms.find(matchId);
                 }
-                var sheet = getFormById(formId);
-                console.log("sheet = " + sheet);
-                var index = forms.indexOf(sheet);
-                console.log("index2 = " + index);
-                forms.splice(index, 1);
-                console.log("forms now = " + forms);
+                forms.forEach(checkDelete);
                 callback(forms);
             },
 
