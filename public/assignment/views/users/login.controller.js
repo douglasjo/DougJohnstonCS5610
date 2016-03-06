@@ -1,20 +1,28 @@
 (function() {
     angular
         .module("FormBuilderApp")
-        .service("UserService")
         .controller("LoginController", LoginController);
-    function LoginController($scope, $rootScope, $route) {
+    function LoginController($scope, $rootScope, $location, UserService) {
+        //var users = UserService.users;
         function nav(response){
             if (response == null) {
                 alert("not a valid password/username combination");
             } else {
-                $rootScope.user=response;
-                $route="/profile";
+                //console.log(response);
+                $rootScope.currentUser=response;
+                $rootScope.isLoggedIn = true;
+                if (UserService.hasRole(response, "admin")) {
+                    $rootScope.adminPriv = true;
+                }
+                $location.path('/profile');;
             }
         }
 
-        $scope.login = function(user){
-            users.findUserByCredentials(user.username, user.password, nav);
+        $scope.login = function(){
+            //console.log("login called");
+            //console.log("username: " + $scope.username);
+            //console.log("password: " + $scope.password);
+            UserService.findUserByCredentials($scope.username, $scope.password, nav);
         }
     }
 })();

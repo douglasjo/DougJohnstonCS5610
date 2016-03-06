@@ -1,0 +1,105 @@
+
+<div class="container-fluid" ng-controller="FieldsController">
+    <label for="firstname">First Name</label>
+    <div class="row">
+        <div class="col-xs-3">
+            <input type="text" class="form-control " id="firstname" placeholder="First Name">
+        </div>
+        <button class="btn btn-default" type="submit">
+            <span class=" glyphicon glyphicon-pencil"></span></button>
+        <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-remove"></span></button>
+        <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-align-justify"></span></button>
+    </div>
+    <label for="lastname">Last Name</label>
+    <div class="row">
+        <div class="col-xs-3">
+            <input type="text" class="form-control " id="lastname" placeholder="Last Name">
+        </div>
+        <button class="btn btn-default" type="submit"><span class=" glyphicon glyphicon-pencil"></span></button>
+        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-align-justify"></span></button>
+    </div>
+    <label for="birthdate">Date of Birth</label>
+    <div class="row">
+        <div class="form">
+            birthdate
+            <input type="date" id="birthdate">
+        </div>
+        <label for="gender">Gender</label>
+        <div class="row">
+            <div class="col-xs-3">
+                <select id="gender">
+                    <option selected="true">male</option>
+                    <option>female</option>
+                </select>
+            </div>
+            <button class="btn btn-default" type="submit"><span class=" glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-align-justify"></span></button>
+        </div>
+
+        <label for="roles">Roles</label>
+        <div class="row" id = "roles">
+            <div class="col-xs-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">Admin
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">Student
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">User
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-default" type="submit"><span class=" glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-align-justify"></span></button>
+        </div>
+        <label for="license">License Agreement</label>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="radio-inline" id="license">
+                    <label><input type="radio" name="optradio">Yes</label>
+                </div>
+                <div class="radio-inline">
+                    <label><input type="radio" name="optradio">No</label>
+                </div>
+            </div>
+            <button class="btn btn-default" type="submit"><span class=" glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-align-justify"></span></button>
+        </div>
+
+        <label for="add">Add New Field</label>
+        <div class="row">
+            <div class="col-xs-3">
+                <select id="add">
+                    <option selected="true">Single Line Text</option>
+                    <option>Date</option>
+                    <option>Dropdown</option>
+                    <option>Checkboxes</option>
+                    <option>Radio buttons</option>
+                    <option>Paragraph Text Field</option>
+                </select>
+            </div>
+            <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#pop-up">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
+</div>
+

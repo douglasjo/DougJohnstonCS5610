@@ -1,13 +1,20 @@
 (function(){
     angular
         .module("FormBuilderApp")
-        .service("UserService")
         .controller("ProfileController", ProfileController);
-    function ProfileController($scope, $rootScope) {
+    function ProfileController($scope, $rootScope, UserService) {
+        console.log($rootScope.currentUser.username);
+        $scope.userName = $rootScope.currentUser.username;
+        $scope.password = $rootScope.currentUser.password;
+        $scope.firstName = $rootScope.currentUser.firstName;
+        $scope.lastName = $rootScope.currentUser.lastName;
+        $scope.email = $rootScope.currentUser.email;
 
+        var users = UserService.users;
 
-        $rootScope.updateLogin = function(person) {
+        $scope.updateLogin = function(person) {
             $rootScope.currentUser = person;
+            console.log("updateLogin");
             /*
             $rootScope.firstName = person.firstname ;//person.firstName;
             $rootScope.lastName = person.lastName;
@@ -18,16 +25,17 @@
         };
 
 
-        $scope.update = function(user) {
-            var person = {"_id": findUserByCredentials(user.username, user.password,
+        $scope.update = function() {
+            var person = {"_id": UserService.findUserByCredentials($scope.username, $scope.password,
                 (function(response){return response._id})),
-                "firstName": user.firstName,
-                "lastName": user.lastName,
-                "username": user.username,
-                "password": user.password,
-                "email": user.email
+                "firstName": $scope.firstName,
+                "lastName": $scope.lastName,
+                "username": $scope.username,
+                "password": $scope.password,
+                "email": $scope.email
             };
-            updateUser(person, updateLogin);
+            console.log("update");
+            UserService.updateUser(person._id, person, $scope.updateLogin);
         };
 
     }

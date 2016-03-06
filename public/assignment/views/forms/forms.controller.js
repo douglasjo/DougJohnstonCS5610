@@ -2,46 +2,54 @@
     angular
         .module("FormBuilderApp")
         .controller("FormsController", FormsController);
-    function FormsController($scope, $FormService) {
-        ///inject FormService
+    function FormsController($scope, $rootScope, FormService) {
+        $scope.showFields=false;
+        $scope.fields=fields/form-field.view.html;
+        $scope.selectedTitle="";
+        $scope.selectedForm= {
+            "_id": (new Date).getTime(),
+            "title": $scope.selectedTitle,
+            "userId": $rootScope.currentUser._id
+        };
 
-        $scope.$showFields=true;
+        var filler = FormService.findAllFormsForUser($rootScope.currentUser._id,
+            (function (response) {return response}));
+        console.log("filler = " + filler);
 
-        $scope.myForms= findAllFormsForUser($scope.userId, $scope.findAllCall);
+        $scope.myForms= filler;
+        $scope.allForms= FormService.forms;
 
-        var tempForms = [];
-        tempForms = [
+        $scope.addForm = function() {
+            console.log("addform called");
+            console.log("selectedTitle= " + $scope.selectedTitle);
+            $scope.selectedForm.title= $scope.selectedTitle;
+            FormService.createFormForUser($rootScope.currentUser._id, $scope.selectedForm, FormService.fakeCallback);
+            $scope.myForms=FormService.findAllFormsForUser($rootScope.currentUser._id,
+                (function (response) {return response}));
+        };
 
-            {"_id": "000", "title": "Contacts", "userId": 123},
+        $scope.updateForm = function() {
+            console.log("updateform called");
+            $scope.selectedForm.title= $scope.selectedTitle;
+            FormService.updateFormById($scope.formId, $scope.selectedForm, FormService.fakeCallback);
+        };
 
-            {"_id": "010", "title": "ToDo",     "userId": 123},
+        $scope.deleteForm = function($index) {
+            console.log("deleteform called");
+            console.log("index = " + $index);
+            var formId = $scope.myForms[$index]._id;
+            console.log("formId = " + formId);
+            FormService.deleteFormById(formId, FormService.fakeCallback);
+            $scope.myForms.splice($index, 1);
+        };
 
-            {"_id": "020", "title": "CDs",      "userId": 234}
+        $scope.selectForm = function($index) {
+            //console.log("selectForm called");
+            //console.log("index = " + $index);
+            $scope.selectedForm=$scope.myForms[$index];
 
-        ];
-
-        scope.someForms=tempForms;
-
-        ///make forms available for view to render
-
-
-        function addForm() {
-            createFormForUser($scope.userId, $scope.form, somecallback);
-        }
-
-        function updateForm() {
-            updateFormById($scope.formId, $scope.userId, $scope.updateCall);
-        }
-
-        function deleteForm($index) {
-
-            deleteFormById($scope.formId, $scope.deleteCall);
-        }
-
-        function selectForm($index) {
-
-        }
-
-
+            $scope.selectedTitle=$scope.selectedForm.title;
+            //console.log("selectedtitle is: " + $scope.selectedTitle);
+        };
     }
 })();

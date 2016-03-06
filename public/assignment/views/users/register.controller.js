@@ -3,14 +3,22 @@
         .module("FormBuilderApp")
 
         .controller("RegisterController", RegisterController);
-    function RegisterController($scope, $rootScope, $route, UserService) {
+    function RegisterController($scope, $rootScope, $location, UserService) {
 
-        $scope.Users = UserService.all();
+        var users = UserService.users;
+        //users = UserService.findAllUsers(UserService.fakeCallback);
+        //console.log(users);
 
-        function regnav (person) {
-            $rootScope.user=person;
+        function regNav (person) {
+            $rootScope.currentUser=person;
             $rootScope.isLoggedIn = true;
-            $route="/profile";
+            if (UserService.hasRole(person, "admin")) {
+                $rootScope.adminPriv = true;
+            }
+            $location.path('/profile');
+            //console.log($location);
+            //console.log("regNav");
+
         }
 
         $scope.register = function () {
@@ -18,14 +26,18 @@
                 alert("passwords do not match");
             } else {
                 var person = {
-                    "_id": 10,
+                    "_id": (new Date).getTime(),
                     "firstName": "",
                     "lastName": "",
                     "username": $scope.username,
                     "password": $scope.password,
+                    "roles": [],
                     "email": $scope.email
                 };
-                createUser(person, regNav);
+                //console.log("register");
+                //console.log("user= "+ person);
+                UserService.createUser(person, regNav);
+                //console.log("rootscope= " + $rootScope.currentUser.username);
             }
         }
     }

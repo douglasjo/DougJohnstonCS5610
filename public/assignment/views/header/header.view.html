@@ -1,8 +1,14 @@
+
+
 header login: {{isLoggedIn}}
 header admin: {{adminPriv}}
+header username: {{currentUser.username}}
+header password: {{currentUser.password}}
+header firstName: {{currentUser.firstName}}
+header lastname: {{currentUser.lastName}}
+header email: {{currentUser.email}}
 
 <nav class= "container-fluid navbar .top" ng-controller="HeaderController">
-    header lorem: {{lorem}}
     <div class="navbar-header">
         <a class="navbar-brand" href="#">Form Maker</a>
     </div>

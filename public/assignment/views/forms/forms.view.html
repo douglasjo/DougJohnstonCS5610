@@ -6,18 +6,23 @@
 
 <body>
 <div class="container-fluid" ng-controller="FormsController">
+oldform-field.controller.js
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Forms</h1>
             <label for="table1">
                 <ul class="nav nav-tabs" ng-init>
-                    <li ng-click="$showFields=false"><a>Forms</a></li>
-                    <li ng-click="$showFields=true"><a>Fields</a></li>
+                    <li ng-click="showFields=false"><a>Forms</a></li>
+                    <li ng-click="showFields=true"><a>Fields</a></li>
                 </ul>
             </label>
 
+
+            <div ng-show="showFields">{{fields}}</div>
+
+
             <table id="table1" class="table table-responsive table-striped table-bordered"
-            ng-hide="$showFields">
+                   ng-hide="showFields">
                 <thead>
                 <tr>
                     <th>Form Name</th>
@@ -26,8 +31,8 @@
                 </thead>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" placeholder="name"
-                               ng-model="selected">
+                        <input type="text" class="form-control" placeholder="", id="selectedTitle",
+                               ng-model="selectedTitle">
                     </td>
                     <td>
                         <button class="btn btn-default" type="submit" ng-click="addForm()">
@@ -36,37 +41,23 @@
                             <span class="glyphicon glyphicon-ok"></span></button>
                     </td>
                 </tr>
-
-                <tbody>
-                <tr>{{myForms}}</tr>
+                <!--<tr>{{allForms}}</tr>
+                <tr>{{myForms}}</tr>-->
                 <tr ng-repeat="td_form in myForms">
                     <td>{{td_form.title}}</td>
-                    <td>
-                        <button class="btn btn-default" type="submit" ng-click="deleteForm()">
+                    <td class="form-group">
+                        <button class="btn btn-default" type="submit" ng-click="deleteForm($index)">
                             <span class="glyphicon glyphicon-remove"></span></button>
-                        <button class="btn btn-default" type="submit" ng-click="selectForm()">
+                        <button class="btn btn-default" type="submit" ng-click="selectForm($index)">
                             <span class="glyphicon glyphicon-pencil"></span></button>
                     </td>
                 </tr>
+                <tbody>
                 </tbody>
-            </table>
-        </div>
+                </table>
+            </div>
+
     </div>
 </div>
-
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
-
-
-
-
 </body>
 </html>
