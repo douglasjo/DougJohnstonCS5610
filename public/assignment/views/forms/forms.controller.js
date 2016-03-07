@@ -40,5 +40,7 @@
             $scope.selectedForm=$scope.myForms[$index];
             $scope.selectedTitle=$scope.selectedForm.title;
         };
+
+        $scope.fieldTarget = "fields will go here when implemented in future assignment";
     }
 })();
