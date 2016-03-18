@@ -1,7 +1,7 @@
 "use strict";
 (function() {
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .controller("LoginController", LoginController);
     function LoginController($scope, $rootScope, $location, UserService) {
         function nav(response) {
@@ -13,7 +13,7 @@
                 if (UserService.hasRole(response, "admin")) {
                     $rootScope.adminPriv = true;
                 }
-                $location.path('/profile');;
+                $location.path('/profile');
             }
         }
 

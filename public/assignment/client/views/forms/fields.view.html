@@ -3,7 +3,8 @@
     <label for="firstname">First Name</label>
     <div class="row">
         <div class="col-xs-3">
-            <input type="text" class="form-control " id="firstname" placeholder="First Name">
+            <input type="text" class="form-control " id="firstname" placeholder="First Name"
+            ng-model="firstName">
         </div>
         <button class="btn btn-default" type="submit">
             <span class=" glyphicon glyphicon-pencil"></span></button>
@@ -17,7 +18,8 @@
     <label for="lastname">Last Name</label>
     <div class="row">
         <div class="col-xs-3">
-            <input type="text" class="form-control " id="lastname" placeholder="Last Name">
+            <input type="text" class="form-control " id="lastname" placeholder="Last Name"
+            ng-model="lastName">
         </div>
         <button class="btn btn-default" type="submit"><span class=" glyphicon glyphicon-pencil"></span></button>
         <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
@@ -28,12 +30,12 @@
     <div class="row">
         <div class="form">
             birthdate
-            <input type="date" id="birthdate">
+            <input type="date" id="birthdate" ng-model="birthdate">
         </div>
         <label for="gender">Gender</label>
         <div class="row">
             <div class="col-xs-3">
-                <select id="gender">
+                <select id="gender" ng-model="gender">
                     <option selected="true">male</option>
                     <option>female</option>
                 </select>
@@ -87,7 +89,7 @@
         <label for="add">Add New Field</label>
         <div class="row">
             <div class="col-xs-3">
-                <select id="add">
+                <select id="add" ng-model="add">
                     <option selected="true">Single Line Text</option>
                     <option>Date</option>
                     <option>Dropdown</option>
