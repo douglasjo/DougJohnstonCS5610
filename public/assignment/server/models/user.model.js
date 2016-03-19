@@ -15,16 +15,15 @@
         };
         return service;
 
-        function getAllUsers(){
-
+        function getAllUsers(callback){
             $http
-                .get("/rest/user")
-            //.then();
+                .get("/api/assignment/user")
+                .success(callback);
         }
 
         function getUserById(userId, callback){
             $http
-                .get("/rest/user/" + userId)
+                .get("/api/assignment/user/" + userId)
                 .success(callback);
         }
 
@@ -33,13 +32,13 @@
         function deleteUserById(userId, callback){
             console.log("deleting user..." + userId);
             $http
-                .delete("/rest/user/" + userId)
+                .delete("/api/assignment/user/" + userId)
                 .success(callback);
         }
 
         function updateUserById(userId, user, callback){
             $http
-                .put("/rest/user/"+ userId, user)
+                .put("/api/assignment/user/"+ userId, user)
                 .success(callback);
         }
     }

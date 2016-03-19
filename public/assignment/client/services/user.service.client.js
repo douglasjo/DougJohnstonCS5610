@@ -32,6 +32,7 @@
             },
 
             findUserByCredentials: function(username, password, callback) {
+
                 function matchByNameAndPassword(user) {
                     return (user.username == username && user.password == password);
                 }

@@ -1,5 +1,6 @@
+var uid = require('node-uuid');
 
-module.exports = function(app){
+module.exports = function(app, model, db){
 
     //read the data from mock json file
     var users = require('models/user.mock.json');
@@ -7,6 +8,7 @@ module.exports = function(app){
     //api/assignment apis
     app.post('/api/assignment/user', function(req, res){
         var user = req.body;
+        user._id = uuid.v1();
         users.push(user);
         res.send(users);
     });
@@ -36,31 +38,34 @@ module.exports = function(app){
         var username = ;
         var person = users.filter(function(user){return user.username == alice;});
         var user_index = users.indexOf(person);
-        res.send(users[user_index]);
-        /*var user_index = req.params["id"];
-         console.log("sending user back to client.." + user_index);
-
-         res.send(users[user_index]);*/
+        if(person.password == password){
+            res.send(users[user_index]);
+        }
+        else res.send(null);
     });
 
     app.delete("/api/assignment/user/:id", function(req, res){
         console.log("server side deleting...");
         var user_id = req.params["id"];
-        users.splice(user_id, 1);
+        var person = users.filter(function(user){return user.id == user_id;});
+        var user_index = users.indexOf(person);
+        users.splice(user_index, 1);
         res.send(users);
     });
 
     app.put('/api/assignment/user/:id', function(req, res){
-        var index = req.params["id"];
+        var user_id = req.params["id"];
+        var person = users.filter(function(user){return user.id == user_id;});
+        var user_index = users.indexOf(person);
         console.log('updating...' + index);
 
         var user = req.body;
         console.log('updating..user title: ' + user.userName);
 
-        users[index].firstName = user.firstName;
-        users[index].lastName = user.lastName;
-        users[index].userName = user.userName;
-        users[index].password = user.password;
+        users[user_index].firstName = user.firstName;
+        users[user_index].lastName = user.lastName;
+        users[user_index].userName = user.userName;
+        users[user_index].password = user.password;
 
         res.json(users);
     });
