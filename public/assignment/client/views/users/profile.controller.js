@@ -11,9 +11,11 @@
         $scope.lastName = $rootScope.currentUser.lastName;
         $scope.email = $rootScope.currentUser.email;
 
+        /*
         $scope.updateLogin = function(person) {
             $rootScope.currentUser = person;
         };
+        */
 
 
         $scope.update = function() {
@@ -25,6 +27,7 @@
                 "email": $scope.email
             };
             console.log("update");
+            $rootScope.currentUser = person;
             UserService.updateUser(person._id, person, $scope.updateLogin);
         };
 

@@ -1,45 +1,91 @@
-
 (function(){
     angular
-        .module("FormServiceApp")
-        .factory("UserService", userService);
+        .module("UserModelApp", []);
 
-    function UserService($http){
-
-        var service = {
+    (function ($http, $q) {
+        return {
             getAllUsers : getAllUsers,
             getUserById : getUserById,
             createUser : createUser,
             deleteUserById : deleteUserById,
-            updateUserById : updateUserById
+            updateUserById : updateUserById,
+            findUserByUsername : findUserByUsername,
+            findUserByCredentials : findUserByCredentials
         };
-        return service;
 
-        function getAllUsers(callback){
+        function getAllUsers(){
+            var deferred = $q.defer();
             $http
                 .get("/api/assignment/user")
-                .success(callback);
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
 
-        function getUserById(userId, callback){
+        function getUserById(userId){
+            var deferred = $q.defer();
             $http
                 .get("/api/assignment/user/" + userId)
-                .success(callback);
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
 
-        function createUser(){}
+        function createUser(){
+            var deferred = $q.defer();
+            $http
+                .post("api/assignment/user", user)
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
 
-        function deleteUserById(userId, callback){
+        function deleteUserById(userId){
+            var deferred = $q.defer();
             console.log("deleting user..." + userId);
             $http
                 .delete("/api/assignment/user/" + userId)
-                .success(callback);
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
 
-        function updateUserById(userId, user, callback){
+        function updateUserById(userId, user){
+            var deferred = $q.defer();
             $http
                 .put("/api/assignment/user/"+ userId, user)
-                .success(callback);
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
-    }
+
+        function findUserByUsername(username) {
+            var deferred = $q.defer();
+            var url= "/api/assignment/user?username=" + username;
+            $http
+                .get(url)
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findUserByCredentials(credentials) {
+            var deferred = $q.defer();
+            var username = credentials.username;
+            var password = credentials.password;
+            var url = "/api/assignment/user?username=" + username + "&password=" + password;
+            $http
+                .get(url)
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+    })();
 })();

@@ -4,24 +4,32 @@
         .module("FormBuilderApp")
         .factory("FormService", FormService);
 
-    function FormService() {
-
+    function FormService($http, $q) {
 
         return {
-            forms: forms,
+            /*forms: forms,
 
             fakeCallback: function(response){
                 return response;
-            },
+            },*/
 
-            createFormForUser: function(userId, form, callback) {
+            createFormForUser: function(userId, form) {
                 var newForm = {
                     _id: form._id,
                     title: form.title,
                     userId: userId
                 };
+                var deferred = $q.defer();
+                $http
+                    .post("/api/assignment/form/")
+                    .then(function(response){
+                        deferred.resolve(response);
+                    });
+                return deferred.promise;
+
+                /*
                 forms.push(newForm);
-                callback(newForm);
+                callback(newForm);*/
             },
 
             /*
@@ -31,25 +39,49 @@
             in the interest of functionality, I chose to leave it as is.
             */
 
-            findAllFormsForUser: function (userId, callback) {
-                var result = [];
+            findAllFormsForUser: function (userId) {
+                var deferred = $q.defer();
+                $http
+                    .get('/api/assignment/user/' + userId + "form")
+                    .then(function(response){
+                        deferred.resolve(response);
+                    });
+                return deferred.promise;
+
+                /*var result = [];
                 function addToResult(form) {
                     if (form.userId == userId) {
                         result.push(form);
                     }
                 }
                 forms.forEach(addToResult);
-                return result;
+                return result;*/
             },
 
-            getFormById: function (id) {
+            getFormById: function (formId) {
+                var deferred = $q.defer();
+                $http
+                    .get('/api/assignment/form' + formId)
+                    .then(function(response){
+                        deferred.resolve(response);
+                    });
+                return deferred.promise;
+                /*
                 function matchId(form) {
                     return (form.id == formId);
                 }
-                return forms.find(matchId);
+                return forms.find(matchId);*/
             },
 
-            deleteFormById: function (formId, callback) {
+            deleteFormById: function (formId) {
+                var deferred = $q.defer();
+                $http
+                    .delete("/api/assignment/form/" + formId)
+                    .then(function(response){
+                        deferred.resolve(response);
+                    });
+                return deferred.promise;
+                /*
                 function checkDelete(form) {
                     if (formId == form._id) {
                         var index = forms.indexOf(form);
@@ -57,10 +89,18 @@
                     }
                 }
                 forms.forEach(checkDelete);
-                callback(forms);
+                callback(forms);*/
             },
 
-            updateFormById: function (formId, newForm, callback) {
+            updateFormById: function (formId, newForm) {
+                var deferred = $q.defer();
+                $http
+                    .put("/api/assignment/form/" + formId)
+                    .then(function(response){
+                        deferred.resolve(response);
+                    });
+                return deferred.promise;
+                /*
                 function getFormById(id) {
                     function matchId(form) {
                         return (form.id == formId);
@@ -74,7 +114,7 @@
                     title: newForm.title,
                     userId: newForm.userId
                 };
-                callback(newForm);
+                callback(newForm);*/
             }
         };
 
