@@ -15,7 +15,13 @@
         };
 
         function createFieldForForm (formId, field) {
-
+            var deferred = $q.defer();
+            $http
+                .post("/api/assignment/form/" + formId + '/field', field)
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
 
         function getFieldsForForm (formId) {

@@ -1,5 +1,73 @@
 
 <div class="container-fluid" ng-controller="FieldsController">
+    <table id="table" class="table table-responsive table-bordered">
+        <tr ng-repeat="field in myFields track by $index">
+            <td>
+                <label for="type">{{field.label}}</label>
+                <input id = "type" type = {{field.type}} {{suplemental}}>
+            </td>
+            <td>
+                <button class="btn btn-default" type="submit" ng-click="edit()">
+                    <span class=" glyphicon glyphicon-pencil"></span></button>
+                <button class="btn btn-default" type="submit" ng-click="addfield()">
+                    <span class="glyphicon glyphicon-plus"></span></button>
+                <button class="btn btn-default" type="submit" ng-click="removefield()">
+                    <span class="glyphicon glyphicon-remove"></span></button>
+                <button class="btn btn-default" type="submit" ng-click="???">
+                    <span class="glyphicon glyphicon-align-justify"></span></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="add">Add New Field</label>
+                <div class="row">
+                    <!--<div class="col-xs-3">-->
+                        <select id="add" ng-model="add">
+                            <option selected="true">Single Line Text</option>
+                            <option>Date</option>
+                            <option>Dropdown</option>
+                            <option>Checkboxes</option>
+                            <option>Radio buttons</option>
+                            <option>Paragraph Text Field</option>
+                        </select>
+                    <!--</div>-->
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="newLabel">Label</label>
+                    <input id="newlabel" type="text">
+                    {{modalBody}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addField">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!--
+
+
     <label for="firstname">First Name</label>
     <div class="row">
         <div class="col-xs-3">
@@ -102,6 +170,6 @@
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
-    </div>
+    </div> -->
 </div>
 

@@ -3,22 +3,22 @@
         .module("FormBuilderApp")
         .controller("FieldsController", FieldsController);
     function FieldsController($scope, $rootScope, FieldService, $routeParams) {
+        $scope.table.sortable(); //update actual order in model
 
-
-        $scope.addForm = function (){
-
-        };
-
-        $scope.deleteForm = function (){
+        $scope.addField = function (){
 
         };
 
-        $scope.updateForm = function (){
+        $scope.deleteField = function (){
 
         };
 
-        $scope.selectForm = function (){
+        $scope.edit = function (){
 
-        }
+        };
+
+        /*$scope.selectForm = function (){
+
+        }*/
     }
 })();
