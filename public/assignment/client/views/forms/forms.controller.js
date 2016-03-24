@@ -16,7 +16,7 @@
                 "userId": $rootScope.currentUser._id,
                 "_id": (new Date).getTime()
             };
-            FormService.createFormForUser($rootScope.currentUser._id, newForm, FormService.fakeCallback);
+            FormService.createFormForUser($rootScope.currentUser._id, newForm);
 
             $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,
                 (function (response) {return response}))
@@ -24,13 +24,14 @@
 
         $scope.updateForm = function() {
             console.log("updateform called");
+            $rootScope.form=$scope.selectedForm;
             $scope.selectedForm.title= $scope.selectedTitle;
-            FormService.updateFormById($scope.formId, $scope.selectedForm, FormService.fakeCallback);
+            FormService.updateFormById($scope.formId, $scope.selectedForm);
         };
 
         $scope.deleteForm = function($index) {
             var formId = $scope.myForms[$index]._id;
-            FormService.deleteFormById(formId, FormService.fakeCallback);
+            FormService.deleteFormById(formId);
             console.log($scope.myForms);
             console.log($index);
             $scope.myForms.splice($index, 1);

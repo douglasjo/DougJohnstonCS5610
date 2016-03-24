@@ -8,6 +8,6 @@
                 $rootScope.isLoggedIn = false;
                 $rootScope.adminPriv = false;
                 $rootScope.currentUser = {};
-
+                $rootScope.form=null;
             });
 })();
