@@ -42,6 +42,18 @@
             $scope.selectedTitle=$scope.selectedForm.title;
         };
 
-        $scope.fieldTarget = "fields will go here when implemented in future assignment";
+        $scope.fieldClick = function() {
+            //$scope.showFields=true;
+            if (selectedForm != null) {
+                $location='form/'+ selectedForm._id + '/fields';
+            }
+
+
+            //$scope.fieldTarget = fields.view.html;
+        };
+
+
+
+            //"fields will go here when implemented in future assignment";
     }
 })();

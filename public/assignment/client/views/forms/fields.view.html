@@ -1,48 +1,68 @@
 
-<div class="container-fluid" ng-controller="FieldsController">
-    <table id="table" class="table table-responsive table-bordered">
-        <tr ng-repeat="field in myFields track by $index">
-            <td>
-                <label for="type">{{field.label}}</label>
-                <input id = "type" type = {{field.type}} {{add-in(field.type)}}>
-            </td>
-            <td>
-                <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#editModal"
-                ng-click="setField(field.type)">
-                    <span class=" glyphicon glyphicon-pencil"></span></button>
-                <button class="btn btn-default" type="submit" ng-click="addfield(field)">
-                    <span class="glyphicon glyphicon-plus"></span></button>
-                <button class="btn btn-default" type="submit" ng-click="removefield(field._id)">
-                    <span class="glyphicon glyphicon-remove"></span></button>
-                <button class="btn btn-default" type="submit" ng-click="???">
-                    <span class="glyphicon glyphicon-align-justify"></span></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="add">Add New Field</label>
-                <div class="row">
-                    <!--<div class="col-xs-3">-->
-                        <select id="add" ng-model="add">
-                            <option selected="true">Single Line Text</option>
-                            <option>Date</option>
-                            <option>Dropdown</option>
-                            <option>Checkboxes</option>
-                            <option>Radio buttons</option>
-                            <option>Paragraph Text Field</option>
-                        </select>
-                    <!--</div>-->
-                </div>
-            </td>
-            <td>
-                <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </td>
-        </tr>
-    </table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Forms</h1>
+            <label for="table1">
+                <ul class="nav nav-tabs" ng-init>
+                    <li><a href = '#/forms'>Forms</a></li>
+                    <li><a>Fields</a></li>
+                </ul>
+            </label>
 
-    <!-- myModal -->
+            <div class="container-fluid" ng-controller="FieldsController">
+                <table id="table" class="table table-responsive table-bordered">
+                    <tr ng-repeat="field in myFields track by $index">
+                        <td>
+                            <label for="type">{{field.label}}</label>
+                            <input id = "type" type = {{field.type}} {{add-in(field.type)}}>
+                        </td>
+                        <td>
+                            <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#editModal"
+                                    ng-click="setField(field.type)">
+                                <span class=" glyphicon glyphicon-pencil"></span></button>
+                            <button class="btn btn-default" type="submit" ng-click="addfield(field)">
+                                <span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-default" type="submit" ng-click="removefield(field._id)">
+                                <span class="glyphicon glyphicon-remove"></span></button>
+                            <button class="btn btn-default" type="submit" ng-click="???">
+                                <span class="glyphicon glyphicon-align-justify"></span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="add">Add New Field</label>
+                            <div class="row">
+                                <!--<div class="col-xs-3">-->
+                                <select id="add" ng-model="add">
+                                    <option selected="true">Single Line Text</option>
+                                    <option>Date</option>
+                                    <option>Dropdown</option>
+                                    <option>Checkboxes</option>
+                                    <option>Radio buttons</option>
+                                    <option>Paragraph Text Field</option>
+                                </select>
+                                <!--</div>-->
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+            <!-- myModal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -198,5 +218,3 @@
             </button>
         </div>
     </div> -->
-</div>
-
