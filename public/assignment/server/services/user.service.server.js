@@ -1,45 +1,55 @@
 var uid = require('node-uuid');
 
-(function() {
-    angular
-        .module("UserServiceApp")
-        .exports = function (app, model, db) {
 
-        //read the data from mock json file
-        var users = require('models/user.mock.json');
+        module.exports = function (app, model) {
 
         //api/assignment apis
         app.post('/api/assignment/user', function (req, res) {
+            console.log('server create called');
             var user = req.body;
             user._id = uuid.v1();
-            users.push(user);
+            model.createUser(user);
+            //users.push(user);
             res.send(users);
         });
 
         app.get('/api/assignment/user', function (req, res) {
-            console.log("after refactoring ----sending users to client..");
-            res.send(users);
+            //console.log("after refactoring ----sending users to client..");
+            var all_users = model.getAllUsers();
+            res.send(all_users);
         });
 
         app.get('/api/assignment/user/:id', function (req, res) {
             var id = req.params["id"];
-            var person = users.filter(function (user) {
+            /*var person = users.filter(function (user) {
                 return user.id == id;
             });
             var user_index = users.indexOf(person);
             console.log("sending user back to client.." + user_index);
+            */
+            var result = model.getUserById(id);
 
-            res.send(users[user_index]);
+            res.send(result);
+            //res.send(users[user_index]);
         });
 
         app.get('/api/assignment/user?username=username', function (req, res) {
             var urlUsername = window.location.search;
             var username = urlUsername.substring(10);
-            var person = users.filter(function (user) {
-                return user.username == username;
-            });
-            var user_index = users.indexOf(person);
-            res.send(users[user_index]);
+            //console.log(username);
+            var person = {"_id": 123, "firstName": "Alice",
+                "lastName": "Wonderland",        "username": "alice",         "password": "alice"};
+
+            //var person = model.findUserByUsername;
+            res.send(person);
+
+
+            /*
+             var person = users.filter(function (user) {
+             return user.username == username;
+             });
+             var user_index = users.indexOf(person);*/
+            //res.send(users[user_index]);
         });
 
         app.get('/api/assignment/user?username=alice&password=wonderland', function (req, res) {
@@ -48,48 +58,30 @@ var uid = require('node-uuid');
             var username = urlUsername.substring(10, splitIndex);
             var secondHalf = query.substring(splitIndex);
             var password = secondHalf.substring(10);
+            var credentials= {username: username, password: password};
 
-            var person = users.filter(function (user) {
-                return user.username == username;
-            });
-            var user_index = users.indexOf(person);
-            if (person.password == password) {
-                res.send(users[user_index]);
-            }
-            else res.send(null);
+            console.log('username=' + username);
+            console.log(password);
+            var person = model.findUserByCredentials(credentials);
+            res.send(person);
         });
 
         app.delete("/api/assignment/user/:id", function (req, res) {
-            console.log("server side deleting...");
+            //console.log("server side deleting...");
             var user_id = req.params["id"];
-            var person = users.filter(function (user) {
-                return user.id == user_id;
-            });
-            var user_index = users.indexOf(person);
-            users.splice(user_index, 1);
-            res.send(users);
+            model.deleteUserById(user_id);
+            var allUsers= model.getAllUsers();
+            res.send(allUsers);
         });
 
         app.put('/api/assignment/user/:id', function (req, res) {
             var user_id = req.params["id"];
-            var person = users.filter(function (user) {
-                return user.id == user_id;
-            });
-            var user_index = users.indexOf(person);
-            console.log('updating...' + index);
-
             var user = req.body;
-            console.log('updating..user title: ' + user.userName);
-
-            users[user_index].firstName = user.firstName;
-            users[user_index].lastName = user.lastName;
-            users[user_index].userName = user.userName;
-            users[user_index].password = user.password;
-
-            res.json(users);
+            model.updateUserById(user_id);
+            var allUsers=model.getAllUsers();
+            res.json(allUsers);
         });
-    }
-})();
+    };
 
 
 

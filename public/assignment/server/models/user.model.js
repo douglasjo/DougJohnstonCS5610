@@ -1,91 +1,83 @@
-(function(){
-    angular
-        .module("UserModelApp", []);
+module.exports=function(app) {
+    var users = require('models/user.mock.json');
 
-    (function ($http, $q) {
-        return {
-            getAllUsers : getAllUsers,
-            getUserById : getUserById,
-            createUser : createUser,
-            deleteUserById : deleteUserById,
-            updateUserById : updateUserById,
-            findUserByUsername : findUserByUsername,
-            findUserByCredentials : findUserByCredentials
+    return {
+        getAllUsers : getAllUsers,
+        getUserById : getUserById,
+        createUser : createUser,
+        deleteUserById : deleteUserById,
+        updateUserById : updateUserById,
+        findUserByUsername : findUserByUsername,
+        findUserByCredentials : findUserByCredentials
+    };
+
+    function getAllUsers(){
+        return users;
+    }
+
+    function getUserById(userId){
+        function sameId(user) {
+            return (user._id == userId);
+        }
+        return users.find(sameId);
+    }
+
+    function createUser(user){
+        var person = {
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            password: user.password
+            //email: user.email
         };
+        users.push(person);
+        return users;
+    }
 
-        function getAllUsers(){
-            var deferred = $q.defer();
-            $http
-                .get("/api/assignment/user")
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
+    function deleteUserById(userId){
+        function sameId(user) {
+            return (user.id == userId);
         }
+        var person = users.find(sameId);
+        var index = users.indexOf(person);
+        users.splice(index, 1);
+        return users;
+    }
 
-        function getUserById(userId){
-            var deferred = $q.defer();
-            $http
-                .get("/api/assignment/user/" + userId)
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
+    function updateUserById(userId, user){
+        function sameId(oldUser) {
+            return (oldUser.id == userId);
         }
+        var person = users.find(sameId);
+        var index = users.indexOf(person);
+        users[index] = {
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            password: user.password
+            //email: user.email
+        };
+        return user;
+    }
 
-        function createUser(){
-            var deferred = $q.defer();
-            $http
-                .post("api/assignment/user", user)
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
+    function findUserByUsername(username) {
+        function matchByName(user) {
+            return (user.username == username);
         }
+        var result = users.find(matchByName);
+        return result;
+    }
 
-        function deleteUserById(userId){
-            var deferred = $q.defer();
-            console.log("deleting user..." + userId);
-            $http
-                .delete("/api/assignment/user/" + userId)
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
-        }
+    function findUserByCredentials(credentials) {
+        var username = credentials.username;
+        var password = credentials.password;
 
-        function updateUserById(userId, user){
-            var deferred = $q.defer();
-            $http
-                .put("/api/assignment/user/"+ userId, user)
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
+        function matchByNameAndPassword(user) {
+            return (user.username == username && user.password == password);
         }
-
-        function findUserByUsername(username) {
-            var deferred = $q.defer();
-            var url= "/api/assignment/user?username=" + username;
-            $http
-                .get(url)
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
-        }
-
-        function findUserByCredentials(credentials) {
-            var deferred = $q.defer();
-            var username = credentials.username;
-            var password = credentials.password;
-            var url = "/api/assignment/user?username=" + username + "&password=" + password;
-            $http
-                .get(url)
-                .then(function(response){
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
-        }
-    })();
-})();
+        var result = users.find(matchByNameAndPassword);
+        return result;
+    }
+};

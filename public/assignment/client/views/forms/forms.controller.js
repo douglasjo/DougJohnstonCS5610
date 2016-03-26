@@ -7,8 +7,11 @@
 
         $scope.showFields=false;
         $scope.selectedForm= {};
+        var selectedId = 1;
         $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,
             (function (response) {return response}));
+
+        $scope.fieldUrl="#/form/"+ selectedId + "formId/fields";
 
         $scope.addForm = function() {
             var newForm = {

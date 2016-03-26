@@ -1,22 +1,23 @@
 var uuid = require('node-uuid');
 
-(function() {
+/*(function() {
     angular
-        .module("FormServiceApp")
-        .exports = function(app, model, db){
+        .module("FormServiceApp")*/
 
-        //read the data from mock json file
-        var forms = require('models/form.mock.json');
+module.exports = function(app, model){
 
         app.get('/api/assignment/form', function(req, res){
+            var forms = model.getAllForms();
             res.send(forms);
         });
 
         //api/assignment apis
         app.get('/api/assignment/user/:userId/form', function(req, res){
-            console.log("after refactoring ----sending forms to client..");
+            //console.log("after refactoring ----sending forms to client..");
             var user_id = req.params["userId"];
-            var myforms = forms.filter(function(f){return f.userId == user_id;});
+
+            var myforms=
+            //var myforms = forms.filter(function(f){return f.userId == user_id;});
             res.send(myforms);
         });
 
@@ -24,7 +25,7 @@ var uuid = require('node-uuid');
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
-            console.log("sending form back to client.." + form_index);
+            //console.log("sending form back to client.." + form_index);
             res.send(forms[form_index]);
         });
 
@@ -36,7 +37,7 @@ var uuid = require('node-uuid');
         });
 
         app.delete("/api/assignment/form/:formId", function(req, res){
-            console.log("server side deleting...");
+            //console.log("server side deleting...");
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
@@ -48,10 +49,10 @@ var uuid = require('node-uuid');
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
-            console.log('updating...' + index);
+            //console.log('updating...' + index);
 
             var newform = req.body;
-            console.log('updating..form title: ' + newform.title);
+            //console.log('updating..form title: ' + newform.title);
             forms[form_index].title=newform.title;
             forms[form_index].fields=newform.fields;
             res.json(forms);
@@ -65,4 +66,4 @@ var uuid = require('node-uuid');
             res.send(forms);
         });
     };
-})();
+//})();

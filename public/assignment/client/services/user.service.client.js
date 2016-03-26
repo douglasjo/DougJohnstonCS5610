@@ -19,7 +19,7 @@
                 var deferred = $q.defer();
                 $http
                     .get("/api/assignment/user/" + userId)
-                    .then(function(response){
+                    .success(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -43,13 +43,14 @@
             },
 
             findUserByCredentials: function(username, password) {
-                var deferred = $q.defer();
                 //var username = credentials.username;
                 //var password = credentials.password;
-                var url = "/api/assignment/user?username=" + username + "&password=" + password;
+                //var url = "/api/assignment/user?username=" + username + "&password=" + password;
+                var deferred = $q.defer();
+                //console.log("/api/assignment/user?username=" + username + "&password=" + password);
                 $http
-                    .get(url)
-                    .then(function(response){
+                    .get("/api/assignment/user?username=" + username + "&password=" + password)
+                    .success(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -75,6 +76,7 @@
             },
 
             createUser: function(user) {
+                console.log('client create called');
                 var deferred = $q.defer();
                 $http
                     .post("api/assignment/user", user)
