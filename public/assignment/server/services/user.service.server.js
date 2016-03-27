@@ -1,4 +1,4 @@
-//var uid = require('node-uuid');
+var uid = require('node-uuid');
 
 
         module.exports = function (app, model) {
@@ -7,7 +7,7 @@
         app.post('/api/assignment/user', function (req, res) {
             console.log('server create called');
             var user = req.body;
-            user._id = 1;//uuid.v1();
+            user._id = uuid.v1();
             model.createUser(user);
             //users.push(user);
             res.send(users);
@@ -20,13 +20,14 @@
         });
 
         app.get('/api/assignment/user/:id', function (req, res) {
-            var id = req.params["id"];
+
             /*var person = users.filter(function (user) {
                 return user.id == id;
             });
             var user_index = users.indexOf(person);
             console.log("sending user back to client.." + user_index);
             */
+            var id = req.params["id"];
             var result = model.getUserById(id);
 
             res.send(result);

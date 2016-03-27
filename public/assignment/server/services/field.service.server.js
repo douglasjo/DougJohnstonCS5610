@@ -1,4 +1,4 @@
-//var uuid = require('node-uuid');
+var uuid = require('node-uuid');
 
 (function() {
     angular
@@ -43,7 +43,7 @@
             var form_index=forms.indexOf(form);
             var fields = forms[form_index].fields;
             var newfield = req.body;
-            newfield._id = 1;//uuid.v1();
+            newfield._id = uuid.v1();
             fields.push(newfield);
             res.send(fields);
         });
@@ -52,16 +52,13 @@
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
-
             var fields = forms[form_index].fields;
             var field_id = req.params["fieldId"];
             var field = fields.filter(function(f){return f._id == field_id;});
             var field_index = fields.indexOf(field);
-
             var newField = req.body;
             fields[field_index].label = newField.label;
             fields[field_index].type = newField.type;
-
             if (newField.type == "TEXT" || newField.type == "TEXTAREA"){
                 fields[field_index].placeholder = newField.placeholder;
             } else if (newField.type == "OPTIONS" || newField.type == "CHECKBOXES"
