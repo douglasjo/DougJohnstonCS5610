@@ -1,4 +1,4 @@
-var uid = require('node-uuid');
+//var uid = require('node-uuid');
 
 
         module.exports = function (app, model) {
@@ -7,7 +7,7 @@ var uid = require('node-uuid');
         app.post('/api/assignment/user', function (req, res) {
             console.log('server create called');
             var user = req.body;
-            user._id = uuid.v1();
+            user._id = 1;//uuid.v1();
             model.createUser(user);
             //users.push(user);
             res.send(users);
@@ -37,10 +37,10 @@ var uid = require('node-uuid');
             var urlUsername = window.location.search;
             var username = urlUsername.substring(10);
             //console.log(username);
-            var person = {"_id": 123, "firstName": "Alice",
-                "lastName": "Wonderland",        "username": "alice",         "password": "alice"};
+            /*var person = {"_id": 123, "firstName": "Alice",
+                "lastName": "Wonderland",        "username": "alice",         "password": "alice"};*/
 
-            //var person = model.findUserByUsername;
+            var person = model.findUserByUsername;
             res.send(person);
 
 

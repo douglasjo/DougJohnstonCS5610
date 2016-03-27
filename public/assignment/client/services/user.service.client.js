@@ -16,6 +16,9 @@
             */
 
             getUserById: function(userId) {
+
+
+
                 var deferred = $q.defer();
                 $http
                     .get("/api/assignment/user/" + userId)
@@ -23,6 +26,7 @@
                         deferred.resolve(response);
                     });
                 return deferred.promise;
+
 
                 /*
                 function sameId(user) {
@@ -43,6 +47,9 @@
             },
 
             findUserByCredentials: function(username, password) {
+
+
+
                 //var username = credentials.username;
                 //var password = credentials.password;
                 //var url = "/api/assignment/user?username=" + username + "&password=" + password;
@@ -65,22 +72,27 @@
             },
 
             findAllUsers: function() {
+
+
                 var deferred = $q.defer();
                 $http
                     .get("/api/assignment/user")
-                    .then(function(response){
+                    .success(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-                //callback(users);
+                /*callback(users);
+                */
             },
 
             createUser: function(user) {
+
+
                 console.log('client create called');
                 var deferred = $q.defer();
                 $http
                     .post("api/assignment/user", user)
-                    .then(function(response){
+                    .sucess(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -98,11 +110,13 @@
             },
 
             deleteUserById: function(userId) {
+
+
                 var deferred = $q.defer();
                 console.log("deleting user..." + userId);
                 $http
                     .delete("/api/assignment/user/" + userId)
-                    .then(function(response){
+                    .sucess(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -117,10 +131,12 @@
             },
 
             updateUser: function(userId, user) {
+
+
                 var deferred = $q.defer();
                 $http
                     .put("/api/assignment/user/"+ userId, user)
-                    .then(function(response){
+                    .success(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -142,14 +158,17 @@
             },
 
             findUserByUsername: function (username) {
+
+
                 var deferred = $q.defer();
-                var url= "/api/assignment/user?username=" + username;
+                //var url= "/api/assignment/user?username=" + username;
                 $http
-                    .get(url)
-                    .then(function(response){
+                    .get("/api/assignment/user?username=" + username)
+                    .success(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
+
             }
         };
     }
