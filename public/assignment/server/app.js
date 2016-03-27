@@ -9,9 +9,9 @@ module.exports=function(app){
     var m1 = require("./models/form.model.js")();
     var m2 = require("./models/user.model.js")();
 
-    require("./services/form.service.server.js")(app, m1);
-    require("./services/user.service.server.js")(app, m2);
-    require("./services/field.service.server.js")(app, m1);
+    var r1 = require("./services/form.service.server.js")(app, m1);
+    var r2 = require("./services/user.service.server.js")(app, m2);
+    var r3 = require("./services/field.service.server.js")(app, m1);
 
 
 };
