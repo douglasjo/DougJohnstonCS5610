@@ -3,7 +3,10 @@
         .module("FormBuilderApp")
         .controller("FieldsController", FieldsController);
     function FieldsController($scope, $rootScope, FieldService, $routeParams) {
-        var userId = $location/
+        var locationLength = length(location) - 7;
+        var formId = location.substring(7, locationLength);
+        var form = FormService.get(formId);
+        var UserId = form.UserId;
 
         var selectedField= null;
         var curType = "";
