@@ -12,7 +12,7 @@
 
             <div class="container-fluid" ng-controller="FieldsController">
                 <table id="table" class="table table-responsive table-bordered">
-                    <tr ng-repeat="field in $rootScope.form.fields track by $index">
+                    <tr ng-repeat="field in model.fields track by $index">
                         <td>
                             <label for="type">{{field.label}}</label>
                             <input id = "type" type = {{field.type}}>

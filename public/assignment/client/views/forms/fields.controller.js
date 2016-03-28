@@ -7,6 +7,9 @@
         var formId = location.substring(7, locationLength);
         var form = FormService.get(formId);
         var UserId = form.UserId;
+        var model = {};
+        model.fields = form.fields;
+
 
         var selectedField= null;
         var curType = "";
