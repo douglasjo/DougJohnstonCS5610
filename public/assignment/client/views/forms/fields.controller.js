@@ -9,13 +9,22 @@
         var UserId = form.UserId;
         var model = {};
         model.fields = form.fields;
+        var newform = {
+            _id: form._id,
+            title: form.title,
+            userId: UserId,
+            fields: model.fields
+        };
 
 
-        var selectedField= null;
+        var selectedField = null;
         var curType = "";
 
         $scope.table.sortable(); //update actual order in model
 
+        $scope.order = function (){
+            FormService.updateFormById(form.Id, newForm);
+        };
 
         $scope.addField = function (fieldtype){
             var newfield = {};
