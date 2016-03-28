@@ -41,7 +41,7 @@ var uid = require('node-uuid');
             /*var person = {"_id": 123, "firstName": "Alice",
                 "lastName": "Wonderland",        "username": "alice",         "password": "alice"};*/
 
-            var person = model.findUserByUsername;
+            var person = model.findUserByUsername(username);
             res.send(person);
 
 

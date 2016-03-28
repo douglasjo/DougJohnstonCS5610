@@ -3,20 +3,35 @@
         .module("FormBuilderApp")
         .controller("FieldsController", FieldsController);
     function FieldsController($scope, $rootScope, FieldService, $routeParams) {
+        var userId = $location/
+
         var selectedField= null;
         var curType = "";
-        /*
-        if (curType == "TEXT" || curType == "TEXTAREA") {
-
-        } else if (curType == "OPTIONS" || curType == "RADIO" || curType == "CHECKBOXES") {
-
-        }*/
 
         $scope.table.sortable(); //update actual order in model
 
 
-        $scope.addField = function (field){
-            FieldService.createFieldForForm($rootScope.form._id, field)
+        $scope.addField = function (fieldtype){
+            var newfield = {};
+            if (curType == "TEXT" || curType == "TEXTAREA") {
+                 newField = {
+                    _id: null,
+                    type: fieldtype,
+                    placeholder: ""
+                }
+            } else if (curType == "OPTIONS" || curType == "RADIO" || curType == "CHECKBOXES") {
+                newField = {
+                    _id: null,
+                    type: fieldtype,
+                    options: {}
+                }
+            } else {
+                     newField = {
+                        _id: null,
+                        type: fieldtype
+                }
+            }
+            FieldService.createFieldForForm($rootScope.form._id, newfield)
         };
 
         $scope.deleteField = function (fieldId){
