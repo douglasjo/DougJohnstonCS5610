@@ -43,6 +43,7 @@
         $scope.selectForm = function($index) {
             $scope.selectedForm=$scope.myForms[$index];
             $scope.selectedTitle=$scope.selectedForm.title;
+            $rootScope.form=$scope.selectedForm;
         };
 
         $scope.fieldClick = function() {

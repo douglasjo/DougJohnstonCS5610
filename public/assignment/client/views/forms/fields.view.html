@@ -12,10 +12,10 @@
 
             <div class="container-fluid" ng-controller="FieldsController">
                 <table id="table" class="table table-responsive table-bordered">
-                    <tr ng-repeat="field in myFields track by $index">
+                    <tr ng-repeat="field in $rootScope.form.fields track by $index">
                         <td>
                             <label for="type">{{field.label}}</label>
-                            <input id = "type" type = {{field.type}} {{add-in(field.type)}}>
+                            <input id = "type" type = {{field.type}}>
                         </td>
                         <td>
                             <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#editModal"
@@ -70,8 +70,25 @@
                 </div>
                 <div class="modal-body">
                     <label for="aLabel">Label</label>
-                    <input id="aLabel" type="text" ng-model="fieldLabel">
-                    {{modalBody}}
+                    <input id="aLabel" type="text" ng-model="fieldLabel" placeholder="Label">
+                    <label for="aPlaceholder">Placeholder</label>
+                    <input id="aPlaceholder" type="text" ng-model="fieldPlaceholder" placeholder="placeholder">
+                    <label for="aTooltip">Tooltip</label>
+                    <input id="aTooltip" type="text" ng-model="fieldTooltip" placeholder="Tooltip">
+                    <label for="aType">Type</label>
+                    <select id="aType" ng-model="fieldType">
+                        <option>Single Line Text</option>
+                        <option>Date</option>
+                        <option>Dropdown</option>
+                        <option>Checkboxes</option>
+                        <option>Radio buttons</option>
+                        <option>Paragraph Text Field</option>
+                    </select>
+                    <label for="aOptions">Options</label>
+                    <textarea id="aOptions"  ng-model="fieldTooltip" placeholder=
+                            "Option1
+                             Option2
+                             Option3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" ng-click="addField">Ok</button>
@@ -95,11 +112,19 @@
                 </div>
                 <div class="modal-body">
                     <label for="newLabel">Label</label>
-                    <input id="newlabel" type="text">
-                    {{editBody}}
+                    <input id="newlabel" type="text" ng-model="fieldLabel2">
+
+                    <div ng-show="curType == 'TEXT' || curType == 'TEXTAREA'">
+                        <label for="bPlaceholder">Placeholder</label>
+                        <input id="bPlaceholder" type="text" ng-model="fieldPlaceholder2">
+                    </div>
+                    <div ng-show="curType == 'OPTIONS' || curType == 'RADIO' || curType == 'CHECKBOXES'">
+                        <label for="bOptions">Options</label>
+                        <textarea id="bOptions" placeholder="" ng-model="fieldOptions2"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="addField">Ok</button>
+                    <button type="button" class="btn btn-default" ng-click="updateField" data-dismiss="modal">Ok</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
