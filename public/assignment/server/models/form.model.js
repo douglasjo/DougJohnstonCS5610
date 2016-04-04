@@ -89,7 +89,23 @@ module.exports=function(app) {
              return deferred.promise;*/
         }
 
-        function updateFormById(formId) {
+        function updateFormById(formId, form) {
+            function sameId(oldForm) {
+                return (oldForm._id == userId);
+            }
+
+            var sheet = forms.find(sameId);
+            var index = forms.indexOf(sheet);
+            forms[index] = {
+                _id: form._id,
+                title: form.title,
+                fields: form.fields
+            };
+            return forms[index];
+        }
+
+
+            /*
             var sheet = getFormById(formId);
             var index = forms.indexOf(sheet);
             forms[index] = {
@@ -97,20 +113,9 @@ module.exports=function(app) {
                 title: newForm.title,
                 userId: newForm.userId,
                 fields: newForm.fields
-            };
+            };*/
             //return newForm;
-
-
-            /*
-             var deferred = $q.defer();
-             var url = "/api/assignment/form/:" + formId;
-             $http
-             .put(url)
-             .then(function(response){
-             deferred.resolve(response);
-             });
-             return deferred.promise;*/
-        }
+        //}
 
         function findFormByTitle(title) {
             function grab (form){

@@ -19,6 +19,8 @@
                 "userId": $rootScope.currentUser._id,
                 "_id": (new Date).getTime()
             };
+            console.log("id is: " + $rootScope.currentUser._id);
+            console.log("newform is: " + newForm);
             FormService.createFormForUser($rootScope.currentUser._id, newForm);
 
             $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,

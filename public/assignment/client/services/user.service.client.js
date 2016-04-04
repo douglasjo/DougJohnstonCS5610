@@ -44,12 +44,13 @@
 
             findUserByCredentials: function(username, password) {
                 var deferred = $q.defer();
-                console.log("client username = " + username);
-                console.log("client password = " + password);
+
                 var credentials = {username: username, password: password};
+                console.log("client username is: " + credentials.username);
+                console.log("client password is: " + credentials.password);
                 $http
-                    .get('/api/assignment/user?username=alice&password=wonderland', credentials)
-                    //.get("/api/assignment/user?username=" + username + "&password=" + password, credentials)
+                    .get("/api/assignment/user?username="+ username + "/password="+ password)
+                    //.get("/api/assignment/user?username=<username>&password=<password>")
                     .then(function(response){
                         deferred.resolve(response);
                     });
@@ -144,8 +145,6 @@
                     });
                 return deferred.promise;
             }
-
         };
-
     }
 })();
