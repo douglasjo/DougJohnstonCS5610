@@ -2,8 +2,6 @@
 
 module.exports=function(app){
 
-    //var mockUser = require("./models/user.mock.json");
-
     var formModel = require("./models/form.model.js")();
     var userModel = require("./models/user.model.js")();
 

@@ -4,12 +4,12 @@
         .module("FormBuilderApp")
         .controller("FormsController", FormsController);
     function FormsController($scope, $rootScope, FormService) {
-
         $scope.showFields=false;
         $scope.selectedForm= {};
         var selectedId = 1;
-        $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,
-            (function (response) {return response}));
+        $scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id);
+        /*$scope.myForms = FormService.findAllFormsForUser($rootScope.currentUser._id,
+            (function (response) {return response}));*/
 
         $scope.fieldUrl="#/form/"+ selectedId + "formId/fields";
 
@@ -39,7 +39,7 @@
             FormService.deleteFormById(formId);
             console.log($scope.myForms);
             console.log($index);
-            $scope.myForms.splice($index, 1);
+            //$scope.myForms.splice($index, 1);
         };
 
         $scope.selectForm = function($index) {

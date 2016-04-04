@@ -1,11 +1,6 @@
 var uuid = require('node-uuid');
 
-/*(function() {
-    angular
-        .module("FormServiceApp")*/
-
-module.exports = function(app, model){
-
+module.exports = function (app, model) {
 
         app.get('/api/assignment/form', function(req, res){
             var forms = model.getAllForms();
@@ -15,6 +10,7 @@ module.exports = function(app, model){
         //api/assignment apis
         app.get('/api/assignment/user/:userId/form', function(req, res){
             //console.log("after refactoring ----sending forms to client..");
+            console.log("getting my forms");
             var user_id = req.params["userId"];
             res.send(model.getFormByUserId(user_id));
             /*
@@ -80,6 +76,7 @@ module.exports = function(app, model){
             form.userId = req.params["userId"];
             form._id = uuid.v1();
             model.createForm(form);
+            //model.createForm(form);
             res.send(forms);
         });
     };
