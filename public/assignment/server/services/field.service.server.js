@@ -1,10 +1,9 @@
 var uuid = require('node-uuid');
 
-(function() {
-    angular
-        .module("FieldServiceApp")
-            .exports = function(app, model, db){
-        var forms = require('models/form.mock.json');
+module.exports = function(app, model){
+        //var forms = 'models/form.mock.json';
+    //var forms = require('./form.mock.json');
+    //var forms = require('./models/form.mock.json');
 
         app.get('/api/assignment/form/:formId/field', function(req, res){
             var form_id = req.params['formId'];
@@ -67,5 +66,4 @@ var uuid = require('node-uuid');
             }
             res.send(fields[field_index]);
         });
-    }
-})();
+    };

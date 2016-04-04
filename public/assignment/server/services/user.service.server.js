@@ -1,4 +1,4 @@
-var uid = require('node-uuid');
+var uuid = require('node-uuid');
 
 
         module.exports = function (app, model) {
@@ -7,10 +7,11 @@ var uid = require('node-uuid');
         app.post('/api/assignment/user', function (req, res) {
             console.log('server create called');
             var user = req.body;
+            console.log(req.body);
             user._id = uuid.v1();
             model.createUser(user);
-            //users.push(user);
-            res.send(users);
+            res.send(model.getAllUsers());
+            console.log(model.getAllUsers());
         });
 
         app.get('/api/assignment/user', function (req, res) {
@@ -37,6 +38,7 @@ var uid = require('node-uuid');
         app.get('/api/assignment/user?username=username', function (req, res) {
             var urlUsername = window.location.search;
             var username = urlUsername.substring(10);
+            console.log("username is:" +  username);
             //console.log(username);
             /*var person = {"_id": 123, "firstName": "Alice",
                 "lastName": "Wonderland",        "username": "alice",         "password": "alice"};*/
@@ -54,15 +56,20 @@ var uid = require('node-uuid');
         });
 
         app.get('/api/assignment/user?username=alice&password=wonderland', function (req, res) {
+            console.log("getby credentials server called");
+            var username = req.query.username;
+            var password = req.query.password;
+            /*
             var query = window.location.search;
             var splitIndex = query.indexOf("&");
             var username = urlUsername.substring(10, splitIndex);
             var secondHalf = query.substring(splitIndex);
             var password = secondHalf.substring(10);
+            */
             var credentials= {username: username, password: password};
 
             console.log('username=' + username);
-            console.log(password);
+            console.log("password is " + password);
             var person = model.findUserByCredentials(credentials);
             res.send(person);
         });

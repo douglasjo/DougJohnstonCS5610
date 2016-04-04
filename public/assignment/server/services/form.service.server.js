@@ -6,6 +6,7 @@ var uuid = require('node-uuid');
 
 module.exports = function(app, model){
 
+
         app.get('/api/assignment/form', function(req, res){
             var forms = model.getAllForms();
             res.send(forms);
@@ -47,6 +48,7 @@ module.exports = function(app, model){
 
         app.put('/api/assignment/form/:formId', function(req, res){
             var form_id = req.params["formId"];
+            var forms = model.getAllForms();
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
             //console.log('updating...' + index);

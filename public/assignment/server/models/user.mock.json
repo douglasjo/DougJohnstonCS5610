@@ -8,6 +8,6 @@
 
   {"_id": 456, "firstName": "Dan",        "lastName": "Craig",                 "username": "dan",         "password": "dan"},
 
-  {"_id": 567, "firstName": "Edward","lastName": "Norton",                "username": "ed",        "password": "ed"
+  {"_id": 567, "firstName": "Edward","lastName": "Norton",                "username": "ed",        "password": "ed"}
 
     ]

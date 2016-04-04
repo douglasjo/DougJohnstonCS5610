@@ -4,7 +4,6 @@
         .factory("UserService", UserService);
 
     function UserService($http, $q) {
-
         //var users = findAllUsers();
 
         return {
@@ -16,13 +15,10 @@
             */
 
             getUserById: function(userId) {
-
-
-
                 var deferred = $q.defer();
                 $http
                     .get("/api/assignment/user/" + userId)
-                    .success(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -47,37 +43,22 @@
             },
 
             findUserByCredentials: function(username, password) {
-
-
-
-                //var username = credentials.username;
-                //var password = credentials.password;
-                //var url = "/api/assignment/user?username=" + username + "&password=" + password;
                 var deferred = $q.defer();
-                //console.log("/api/assignment/user?username=" + username + "&password=" + password);
+                console.log("client username = " + username);
+                console.log("client password = " + password);
                 $http
                     .get("/api/assignment/user?username=" + username + "&password=" + password)
-                    .success(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-                /*
-                function matchByNameAndPassword(user) {
-                    return (user.username == username && user.password == password);
-                }
-                var result = users.find(matchByNameAndPassword);
-                if (result == null) {
-                    return result;
-                } else callback(result);*/
             },
 
             findAllUsers: function() {
-
-
                 var deferred = $q.defer();
                 $http
                     .get("/api/assignment/user")
-                    .success(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -86,13 +67,12 @@
             },
 
             createUser: function(user) {
-
-
                 console.log('client create called');
+                console.log(user);
                 var deferred = $q.defer();
                 $http
                     .post("api/assignment/user", user)
-                    .sucess(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -110,13 +90,11 @@
             },
 
             deleteUserById: function(userId) {
-
-
                 var deferred = $q.defer();
                 console.log("deleting user..." + userId);
                 $http
                     .delete("/api/assignment/user/" + userId)
-                    .sucess(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -131,12 +109,10 @@
             },
 
             updateUser: function(userId, user) {
-
-
                 var deferred = $q.defer();
                 $http
                     .put("/api/assignment/user/"+ userId, user)
-                    .success(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
@@ -158,18 +134,16 @@
             },
 
             findUserByUsername: function (username) {
-
-
                 var deferred = $q.defer();
-                //var url= "/api/assignment/user?username=" + username;
                 $http
                     .get("/api/assignment/user?username=" + username)
-                    .success(function(response){
+                    .then(function(response){
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-
             }
+
         };
+
     }
 })();

@@ -14,7 +14,7 @@
 
         {"label": "Massachussetts", "value": "MA"},
 
-        {"label": "New Hampshire", "value": "NH",
+        {"label": "New Hampshire", "value": "NH"}
 
           ]},
 
@@ -26,7 +26,7 @@
 
       },
 
-      {"_id": "010", "title": "ToDo", "userId": 234
+      {"_id": "010", "title": "ToDo", "userId": 234,
 
         "fields": [
 
@@ -34,7 +34,7 @@
 
           {"_id": "888", "label": "Description", "type": "TEXTAREA", "placeholder": "Title"},
 
-          {"_id": "999", "label": "Due Date", "type": "DATE"},
+          {"_id": "999", "label": "Due Date", "type": "DATE"}
 
         ]
 

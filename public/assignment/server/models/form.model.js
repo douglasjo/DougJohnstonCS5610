@@ -1,5 +1,5 @@
 module.exports=function(app) {
-    var forms = require('form.mock.json');
+    var forms = require('./form.mock.json');
 
     (function () {
         return {
