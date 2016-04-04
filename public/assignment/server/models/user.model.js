@@ -4,20 +4,6 @@ module.exports=function(app) {
     //var users = multer({dest: __dirname+'/../../user.mock.json'});
     var users = require('./user.mock.json');
 
-/*
-    var users = [
-
-        {"_id": 123, "firstName": "Alice",         "lastName": "Wonderland",        "username": "alice",         "password": "alice"},
-
-        {"_id": 234, "firstName": "Bob",        "lastName": "Hope",                 "username": "bob",         "password": "bob"},
-
-        {"_id": 345, "firstName": "Charlie","lastName": "Brown",                 "username": "charlie", "password": "charlie"},
-
-        {"_id": 456, "firstName": "Dan",        "lastName": "Craig",                 "username": "dan",         "password": "dan"},
-
-        {"_id": 567, "firstName": "Edward","lastName": "Norton",                "username": "ed",        "password": "ed"}
-
-    ];*/
         console.log(users);
 
         return {
@@ -53,6 +39,8 @@ module.exports=function(app) {
                 //email: user.email
             };
             users.push(person);
+            console.log("users are now: " + users);
+
             return users;
         }
 
@@ -68,9 +56,10 @@ module.exports=function(app) {
         }
 
         function updateUserById(userId, user){
-            console.log ("updateUser called");
+            console.log ("updateUser called for: " + userId);
+            console.log("user is: " + user);
             function sameId(oldUser) {
-                return (oldUser.id == userId);
+                return (oldUser._id == userId);
             }
             var person = users.find(sameId);
             var index = users.indexOf(person);

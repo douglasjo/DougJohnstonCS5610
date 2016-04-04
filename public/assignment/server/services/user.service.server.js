@@ -1,9 +1,6 @@
 var uuid = require('node-uuid');
-
-
         module.exports = function (app, model) {
 
-        //api/assignment apis
         app.post('/api/assignment/user', function (req, res) {
             console.log('server create called');
             var user = req.body;
@@ -57,8 +54,9 @@ var uuid = require('node-uuid');
 
         app.get('/api/assignment/user?username=alice&password=wonderland', function (req, res) {
             console.log("getby credentials server called");
-            var username = req.query.username;
-            var password = req.query.password;
+            var credentials = req.body;
+           // var username = req.query.username;
+           // var password = req.query.password;
             /*
             var query = window.location.search;
             var splitIndex = query.indexOf("&");
@@ -66,10 +64,10 @@ var uuid = require('node-uuid');
             var secondHalf = query.substring(splitIndex);
             var password = secondHalf.substring(10);
             */
-            var credentials= {username: username, password: password};
+            //var credentials= {username: username, password: password};
 
-            console.log('username=' + username);
-            console.log("password is " + password);
+            //console.log('username=' + username);
+            //console.log("password is " + password);
             var person = model.findUserByCredentials(credentials);
             res.send(person);
         });
@@ -85,8 +83,9 @@ var uuid = require('node-uuid');
         app.put('/api/assignment/user/:id', function (req, res) {
             var user_id = req.params["id"];
             var user = req.body;
-            model.updateUserById(user_id);
+            model.updateUserById(user_id, user);
             var allUsers=model.getAllUsers();
+            console.log(allUsers);
             res.json(allUsers);
         });
     };

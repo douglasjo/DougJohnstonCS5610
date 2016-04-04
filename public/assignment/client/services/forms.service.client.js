@@ -7,12 +7,6 @@
     function FormService($http, $q) {
 
         return {
-            /*forms: forms,
-
-            fakeCallback: function(response){
-                return response;
-            },*/
-
             createFormForUser: function(userId, form) {
                 var deferred = $q.defer();
                 $http
@@ -21,18 +15,7 @@
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-
-                /*
-                forms.push(newForm);
-                callback(newForm);*/
             },
-
-            /*
-            For some reason, when I replaced "return result" with "callback result", giving it a callback of
-            (function (response) {return response}), or a call to "fakeCallback" it ceases to evaluate, although the
-            same pattern works fine with the UserService.
-            in the interest of functionality, I chose to leave it as is.
-            */
 
             findAllFormsForUser: function (userId) {
                 var deferred = $q.defer();
