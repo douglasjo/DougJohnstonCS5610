@@ -20,7 +20,7 @@
             findAllFormsForUser: function (userId) {
                 var deferred = $q.defer();
                 $http
-                    .get('/api/assignment/form/' + userId + "form")
+                    .get('/api/assignment/user/' + userId + "form")
                     .then(function(response){
                         deferred.resolve(response);
                     });

@@ -1,12 +1,18 @@
 var mongoose = require('mongoose');
-var schema = mongoose.schema;
+//var schema = mongoose.schema;
 
-var fieldSchema = new schema ({
-    label: String,
-    type: String,
-    placeholder: String,
-    options: [{label:STRING,
-                value:STRING}]
-});
+module.exports = function () {
+    var fieldSchema = new mongoose.Schema({
+        label: String,
+        type: String,
+        placeholder: String,
+        options: [{label:String,
+            value:String}]
+    }, {collection: "Field"});
 
-var field = mongoose.model(fieldSchema);
+    return fieldSchema;
+};
+
+
+
+//var field = mongoose.model(fieldSchema);

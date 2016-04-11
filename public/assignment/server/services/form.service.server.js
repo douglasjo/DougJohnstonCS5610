@@ -3,13 +3,18 @@ var uuid = require('node-uuid');
 module.exports = function (app, model) {
 
         app.get('/api/assignment/form', function(req, res){
-            var forms = model.getAllForms();
-            res.send(forms);
+            if (req.params["formId"]) {
+                var id = req.params["formId"];
+                res.send(model.getFormById(id));
+            } else {
+                var forms = model.getAllForms();
+                res.send(forms);
+            }
+
         });
 
         //api/assignment apis
         app.get('/api/assignment/user/:userId/form', function(req, res){
-            //console.log("after refactoring ----sending forms to client..");
             console.log("getting my forms");
             var user_id = req.params["userId"];
             res.send(model.getFormByUserId(user_id));
@@ -18,7 +23,7 @@ module.exports = function (app, model) {
             var myforms = forms.filter(function(f){return f.userId == user_id;});
             res.send(myforms);*/
         });
-
+/*
         app.get('/api/assignment/form/:formId', function(req, res){
             var id = req.params["formId"];
             res.send(model.getFormById(id));
@@ -28,8 +33,8 @@ module.exports = function (app, model) {
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
             //console.log("sending form back to client.." + form_index);
-            res.send(forms[form_index]);*/
-        });
+            res.send(forms[form_index]);
+        });*/
 
         app.get("/api/assignment/form/title/:formTitle", function(req, res){
             res.send(model.findFormByTitle());

@@ -49,8 +49,7 @@
                 console.log("client username is: " + credentials.username);
                 console.log("client password is: " + credentials.password);
                 $http
-                    .get("/api/assignment/user?username="+ username + "/password="+ password)
-                    //.get("/api/assignment/user?username=<username>&password=<password>")
+                    .get("/api/assignment/user?username="+ username + "&password="+ password)
                     .then(function(response){
                         deferred.resolve(response);
                     });

@@ -18,10 +18,12 @@
         }*/
 
         $scope.login = function() {
+            console.log("login called");
             var response = UserService.findUserByCredentials($scope.username, $scope.password);
-            if (response == null) { //need to change this, it never returns null.
+            if (response == null) {
                 alert("not a valid password/username combination");
             } else {
+                console.log("response=" + response.object);
                 console.log(response.$$state);
                 $rootScope.currentUser=response;
                 $rootScope.isLoggedIn = true;
