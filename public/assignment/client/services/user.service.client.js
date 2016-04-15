@@ -4,15 +4,7 @@
         .factory("UserService", UserService);
 
     function UserService($http, $q) {
-        //var users = findAllUsers();
-
         return {
-            //users: users,
-/*
-            fakeCallback: function(response){
-                return response;
-            },
-            */
 
             getUserById: function(userId) {
                 var deferred = $q.defer();
@@ -22,13 +14,6 @@
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-
-
-                /*
-                function sameId(user) {
-                    return (user.id == userId);
-                }
-                return users.find(sameId);*/
             },
 
             hasRole: function(user, role) {
@@ -49,11 +34,9 @@
                 console.log("client username is: " + credentials.username);
                 console.log("client password is: " + credentials.password);
                 $http
-                    .get("/api/assignment/user?username="+ username + "/password="+ password)
-                    //.get("/api/assignment/user?username=<username>&password=<password>")
+                    .get("/api/assignment/user?username="+ username + "&password="+ password)
                     .then(function(response){
                         deferred.resolve(response);
-                        console.log("response=" + response);
                     });
                 return deferred.promise;
             },
@@ -67,7 +50,7 @@
                     });
                 return deferred.promise;
                 /*callback(users);
-                */
+                 */
             },
 
             createUser: function(user) {
@@ -80,17 +63,6 @@
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-                /*
-                var person = {
-                    _id: user._id,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    username: user.username,
-                    password: user.password,
-                    email: user.email
-                };
-                users.push(person);
-                callback(person);*/
             },
 
             deleteUserById: function(userId) {
@@ -102,14 +74,6 @@
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-                /*
-                function sameId(user) {
-                    return (user.id == userId);
-                }
-                var person = users.find(sameId);
-                var index = users.indexOf(person);
-                $scope.users.splice(index, 1);
-                callback(users);*/
             },
 
             updateUser: function(userId, user) {
@@ -120,21 +84,6 @@
                         deferred.resolve(response);
                     });
                 return deferred.promise;
-                /*
-                function sameId(user) {
-                    return (user.id == userId);
-                }
-                var person = users.find(sameId);
-                var index = users.indexOf(person);
-                users[index] = {
-                    _id: user._id,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    username: user.username,
-                    password: user.password,
-                    email: user.email
-                };
-                callback(user);*/
             },
 
             findUserByUsername: function (username) {
