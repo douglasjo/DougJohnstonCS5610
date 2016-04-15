@@ -1,10 +1,22 @@
-module.exports=function(app) {
+var q = require("q");
+var mongoose = require("mongoose");
 
-    //var multer = require('multer');
-    //var users = multer({dest: __dirname+'/../../user.mock.json'});
+module.exports=function(app, mongoose) {
+
     var users = require('./user.mock.json');
 
-        console.log(users);
+    var userSchema = require("./user.schema.server.js")();
+    var User = mongoose.model("User", userSchema);
+    return {
+        getAllUsers : getAllUsers,
+        getUserById : getUserById,
+        createUser : createUser,
+        deleteUserById : deleteUserById,
+        updateUserById : updateUserById,
+        findUserByUsername : findUserByUsername,
+        findUserByCredentials : findUserByCredentials
+    };
+        //console.log(users);
 
         return {
             getAllUsers : getAllUsers,

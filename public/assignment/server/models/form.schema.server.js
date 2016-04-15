@@ -1,12 +1,16 @@
 var mongoose = require('mongoose');
-var schema = mongoose.schema;
+//var schema = mongoose.schema;
 
-var form = new schema ({
-    userId: String,
-    title: String,
-    fields: [{type: mongoose.Schema.Types.ObjectId, ref: field}],
-    created: Date,
-    updated: Date
-});
+module.exports = function () {
+    var fieldSchema = require("./field.schema.server.js");
 
-return form;
+    var formSchema = new mongoose.Schema ({
+        userId: String,
+        title: String,
+        fields: [fieldSchema],
+        created: Date,
+        updated: Date
+    }, {collection: "Form"});
+
+    return formSchema;
+};
