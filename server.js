@@ -10,6 +10,9 @@ app.use(express.static(__dirname + '/public/assignment/client'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/assignment');
+
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;

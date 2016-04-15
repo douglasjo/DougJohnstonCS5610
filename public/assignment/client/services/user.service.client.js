@@ -53,6 +53,7 @@
                     //.get("/api/assignment/user?username=<username>&password=<password>")
                     .then(function(response){
                         deferred.resolve(response);
+                        console.log("response=" + response);
                     });
                 return deferred.promise;
             },
