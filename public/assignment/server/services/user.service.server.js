@@ -1,5 +1,10 @@
 var uuid = require('node-uuid');
 
+/*var passport = require('passport');
+var auth = authorized;*/
+
+
+
 module.exports = function (app, model) {
 
         app.post('/api/assignment/user', function (req, res) {

@@ -3,14 +3,28 @@ var http = require('http');
 var app = express();
 
 var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 var multer = require('multer'); // v1.0.5
 var upload = multer();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/assignment');
+/*
+var passport      = require('passport');
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
 
 app.use(express.static(__dirname + '/public/assignment/client'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: 'this is the secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+*/
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 

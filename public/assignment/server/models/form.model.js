@@ -15,7 +15,7 @@ module.exports=function(mongoose) {
         };
 
         function getAllForms() {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.find({}, function(err, form) {
                 if (!err) {
                     deferred.resolve (form);
@@ -23,7 +23,7 @@ module.exports=function(mongoose) {
                     deferred.reject (err);
                 }
             return deferred.promise;
-            });
+            });*/
             /*
             var deferred = q.defer();
             Form.find({}, function(err, form) {
@@ -35,7 +35,7 @@ module.exports=function(mongoose) {
             });*/
 
 
-            //return forms;
+            return forms;
 
             /*
              var deferred = $q.defer();
@@ -48,7 +48,7 @@ module.exports=function(mongoose) {
         }
 
         function getFormByUserId(userId) {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.find({userId: userId},
                 function (err, form) {
                     if (!err) {
@@ -57,17 +57,18 @@ module.exports=function(mongoose) {
                         deferred.reject (err);
                     }
                 });
-            return deferred.promise;
-            /*
+            return deferred.promise;*/
+
+
             function grab (form){
                 return (form.userId == userId);
             }
             var myforms = forms.filter(grab);
-            return myforms;*/
+            return myforms;
         }
 
         function getFormById(formId) {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.find({_id: formId},
                 function (err, form) {
                     if (!err) {
@@ -76,12 +77,12 @@ module.exports=function(mongoose) {
                         deferred.reject (err);
                     }
                 });
-            return deferred.promise;
-            /*
+            return deferred.promise;*/
+
             function sameId(form) {
                 return (form._id == formId);
             }
-            return forms.find(sameId);*/
+            return forms.find(sameId);
 
             /*
              var deferred = $q.defer();
@@ -95,7 +96,7 @@ module.exports=function(mongoose) {
         }
 
         function createForm(form) {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.create(form,
                 function (err, form) {
                     if (!err) {
@@ -104,15 +105,16 @@ module.exports=function(mongoose) {
                         deferred.reject (err);
                     }
                 });
-            return deferred.promise;
-            /*
+            return deferred.promise;*/
+
+
             var newForm = {
                 _id: form._id,
                 title: form.title,
                 userId: form.userId,
                 fields: form.fields
             };
-            forms.push(newForm);*/
+            forms.push(newForm);
 
             /*
              var deferred = $q.defer();
@@ -126,7 +128,7 @@ module.exports=function(mongoose) {
         }
 
         function deleteFormById(formId) {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.remove({_id: formId},
                 function (err, form) {
                     if (!err) {
@@ -135,9 +137,9 @@ module.exports=function(mongoose) {
                         deferred.reject (err);
                     }
                 });
-            return deferred.promise;
+            return deferred.promise;*/
 
-            /*
+
             function checkDelete(form) {
                 if (formId == form._id) {
                     var index = forms.indexOf(form);
@@ -145,7 +147,7 @@ module.exports=function(mongoose) {
                 }
             }
             forms.forEach(checkDelete);
-            return forms;*/
+            return forms;
             /*
              var deferred = $q.defer();
              var url = "/api/assignment/form/:" + formId;
@@ -158,7 +160,7 @@ module.exports=function(mongoose) {
         }
 
         function updateFormById(formId, form) {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.update({_id: formId},
                 function (err, form) {
                     if (!err) {
@@ -167,9 +169,8 @@ module.exports=function(mongoose) {
                         deferred.reject (err);
                     }
                 });
-            return deferred.promise;
+            return deferred.promise;*/
 
-            /*
             function sameId(oldForm) {
                 return (oldForm._id == userId);
             }
@@ -182,7 +183,6 @@ module.exports=function(mongoose) {
                 fields: form.fields
             };
             return forms[index];
-        }/*
 
 
             /*
@@ -198,7 +198,7 @@ module.exports=function(mongoose) {
         }
 
         function findFormByTitle(title) {
-            var deferred = q.defer();
+            /*var deferred = q.defer();
             Form.find({title: title},
                 function (err, form) {
                     if (!err) {
@@ -207,14 +207,14 @@ module.exports=function(mongoose) {
                         deferred.reject (err);
                     }
                 });
-            return deferred.promise;
+            return deferred.promise;*/
 
-            /*
+
             function grab (form){
                 return (form.title == title);
             }
             var myforms = forms.filter(grab);
-            return myforms;*/
+            return myforms;
 
             /*
              var deferred = $q.defer();
