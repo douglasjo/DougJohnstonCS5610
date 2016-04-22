@@ -13,7 +13,10 @@ module.exports=function(mongoose, db) {
             createForm: createForm,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
-            findFormByTitle: findFormByTitle
+            findFormByTitle: findFormByTitle,
+            deleteField: deleteField,
+            updateField: updateField,
+            createField: createField
         };
 
         function getAllForms() {
@@ -83,5 +86,19 @@ module.exports=function(mongoose, db) {
             });
             return deferred.promise.data;
         }
+
+        function deleteField(formId, fieldId){
+            var deferred = q.defer();
+
+        }
+
+        function updateField(formId, fieldId, field){
+
+        }
+
+        function createField(formId, field){
+
+        }
+
     })()
 };

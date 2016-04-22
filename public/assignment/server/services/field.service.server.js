@@ -6,21 +6,13 @@ module.exports = function(app, model){
     //var forms = require('./models/form.mock.json');
 
         app.get('/api/assignment/form/:formId/field', function(req, res){
+            var form = model.getFormById(req.params['formId']);
+            var fields = form.fields;
             if (req.params['fieldId']) {
-                //var form_id = req.params['formId'];
-                var field_id = req.params['fieldId'];
-                //var form = forms.filter(function(f){return f._id == form_id;});
-                var form = model.getFormById(req.params['formId']);
-                var form_index=forms.indexOf(form);
-                var fields = forms[form_index].fields;
-                var field= fields.filter(function(f){return f._id == field_id;});
+                var field = fields.filter(function(f){return f._id == field_id;});
                 var field_index = fields.indexOf(field);
                 res.send(fields[field_index]);
             } else {
-                var form_id = req.params['formId'];
-                var form = forms.filter(function(f){return f._id == form_id;});
-                var form_index=forms.indexOf(form);
-                var fields = forms[form_index].fields;
                 res.send(fields);
             }
 
@@ -39,6 +31,12 @@ module.exports = function(app, model){
         */
 
         app.delete('/api/assignment/form/:formId/field/:fieldId', function(req, res){
+            Model.deleteField(formId, fieldId);
+            var form = model.getFormById(req.params['formId']);
+            res.send(form.fields);
+
+
+            /*
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
@@ -47,21 +45,29 @@ module.exports = function(app, model){
             var field = fields.filter(function(f){return f._id == field_id;});
             var field_index = fields.indexOf(field);
             fields.splice(field_index, 1);
-            res.send(fields);
+            res.send(fields);*/
         });
 
         app.post('/api/assignment/form/:formId/field', function(req, res){
+            Model.createField(req.params['formId'], req.body);
+            var form = model.getFormById(req.params['formId']);
+            res.send(form.fields);
+            /*
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
             var fields = forms[form_index].fields;
             var newfield = req.body;
-            newfield._id = uuid.v1();
+            newfield._id = length(fields);
             fields.push(newfield);
-            res.send(fields);
+            res.send(fields);*/
         });
 
         app.put('api/assignment/form/:formId/field/:fieldId', function(req, res){
+            Model.updateField(req.params['formId'], req.params['fieldId'], req.body);
+            var form = model.getFormById(req.params['formId']);
+            res.send(form.fields);
+            /*
             var form_id = req.params["formId"];
             var form = forms.filter(function(f){return f._id == form_id;});
             var form_index=forms.indexOf(form);
@@ -78,6 +84,6 @@ module.exports = function(app, model){
                 || newField.type == "RADIO") {
                 fields[field_index].options = newField.options;
             }
-            res.send(fields[field_index]);
+            res.send(fields[field_index]);*/
         });
     };

@@ -23,7 +23,7 @@ module.exports = function (app, model) {
         if (req.query.username && req.query.password) {
             console.log("credentials");
             var credentials = {username: req.query.username, password: req.query.password};
-            var user = JSON.stringify(model.findUserByCredentials(credentials));
+            var user = model.findUserByCredentials(credentials);
             console.log("user= "+ user);
             res.send(user);
         } else if (req.query.username) {
