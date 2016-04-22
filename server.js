@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/assignment');
 
+//mongoose.connect('mongodb://localhost/project');
+
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;

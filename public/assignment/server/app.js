@@ -3,8 +3,8 @@
 module.exports=function(app){
     var mongoose = require("mongoose");
 
-    var formModel = require("./models/form.model.js")(app, mongoose);
-    var userModel = require("./models/user.model.js")(app, mongoose);
+    var formModel = require("./models/form.model.js")(mongoose, db);
+    var userModel = require("./models/user.model.js")(mongoose, db);
 
     require("./services/form.service.server.js")(app, formModel);
     require("./services/user.service.server.js")(app, userModel);

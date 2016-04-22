@@ -1,7 +1,7 @@
 var q = require("q");
 var mongoose = require("mongoose");
 
-module.exports=function(app, mongoose) {
+module.exports=function(mongoose, db) {
 
     var users = require('./user.mock.json');
 
@@ -16,95 +16,79 @@ module.exports=function(app, mongoose) {
         findUserByUsername : findUserByUsername,
         findUserByCredentials : findUserByCredentials
     };
-        //console.log(users);
-
-        return {
-            getAllUsers : getAllUsers,
-            getUserById : getUserById,
-            createUser : createUser,
-            deleteUserById : deleteUserById,
-            updateUserById : updateUserById,
-            findUserByUsername : findUserByUsername,
-            findUserByCredentials : findUserByCredentials
-        };
 
         function getAllUsers(){
-            return users;
+            var deferred = q.defer();
+            User.find(function(err, user){
+                deferred.resolve(user);
+            });
+            return deferred.promise.data;
         }
 
         function getUserById(userId){
-            console.log ("getById called");
-            function sameId(user) {
-                return (user._id == userId);
-            }
-            return users.find(sameId);
+            var deferred = q.defer();
+            User.findById(userId, function(err, user){
+                deferred.resolve(user);
+            });
+            return deferred.promise.data;
         }
 
+    /*
+     might be a problem with this
+     */
         function createUser(user){
-            console.log ("createUser called");
-            var person = {
-                _id: user._id,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                username: user.username,
-                password: user.password
-                //email: user.email
-            };
-            users.push(person);
-            console.log("users are now: " + users);
-
-            return users;
+            var deferred = q.defer();
+            User.create(page, function(err, doc){
+                User.find(function(err, user){
+                    deferred.resolve(user);
+                });
+            });
+            return deferred.promise.data;
         }
 
         function deleteUserById(userId){
-            console.log ("deleteUser called");
-            function sameId(user) {
-                return (user.id == userId);
-            }
-            var person = users.find(sameId);
-            var index = users.indexOf(person);
-            users.splice(index, 1);
-            return users;
+            var deferred = q.defer();
+            /*User.remove({userId: userId}, function (err, user){
+                deferred.resolve(user);
+            });*/
+
+            User.findById(userId, function(err, doc) {
+                doc.remove();
+                User.find(function(err, user) {
+                    deferred.resolve(user);
+                });
+            });
+            return deferred.promise.data;
         }
 
         function updateUserById(userId, user){
-            console.log ("updateUser called for: " + userId);
-            console.log("user is: " + user);
-            function sameId(oldUser) {
-                return (oldUser._id == userId);
-            }
-            var person = users.find(sameId);
-            var index = users.indexOf(person);
-            users[index] = {
-                _id: user._id,
-                firstName: user.firstName,
+            var deferred = q.defer();
+            User.update({_Id: userId}, {firstName: user.firstName,
                 lastName: user.lastName,
                 username: user.username,
-                password: user.password
-                //email: user.email
-            };
-            return user;
+                password: user.password}, function(err, user){
+                deferred.resolve(user);
+            });
+            return deferred.promise.data;
         }
 
         function findUserByUsername(username) {
-            console.log ("findbyusername called");
-            function matchByName(user) {
-                return (user.username == username);
-            }
-            var result = users.find(matchByName);
-            return result;
+            var deferred = q.defer();
+            User.find({username: username}, function (err, user){
+                deferred.resolve(user);
+            });
+            return deferred.promise.data;
         }
 
         function findUserByCredentials(credentials) {
-            console.log ("findbycredentials called");
+            var deferred = q.defer();
             var username = credentials.username;
             var password = credentials.password;
 
-            function matchByNameAndPassword(user) {
-                return (user.username == username && user.password == password);
-            }
-            var result = users.find(matchByNameAndPassword);
-            return result;
+            User.find({username: username, password: password}, function (err, user){
+                deferred.resolve(user);
+            });
+            return deferred.promise.data;
         }
 
 };

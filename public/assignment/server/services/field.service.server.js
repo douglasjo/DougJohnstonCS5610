@@ -6,13 +6,26 @@ module.exports = function(app, model){
     //var forms = require('./models/form.mock.json');
 
         app.get('/api/assignment/form/:formId/field', function(req, res){
-            var form_id = req.params['formId'];
-            var form = forms.filter(function(f){return f._id == form_id;});
-            var form_index=forms.indexOf(form);
-            var fields = forms[form_index].fields;
-            res.send(fields);
-        });
+            if (req.params['fieldId']) {
+                //var form_id = req.params['formId'];
+                var field_id = req.params['fieldId'];
+                //var form = forms.filter(function(f){return f._id == form_id;});
+                var form = model.getFormById(req.params['formId']);
+                var form_index=forms.indexOf(form);
+                var fields = forms[form_index].fields;
+                var field= fields.filter(function(f){return f._id == field_id;});
+                var field_index = fields.indexOf(field);
+                res.send(fields[field_index]);
+            } else {
+                var form_id = req.params['formId'];
+                var form = forms.filter(function(f){return f._id == form_id;});
+                var form_index=forms.indexOf(form);
+                var fields = forms[form_index].fields;
+                res.send(fields);
+            }
 
+        });
+/*
         app.get('/api/assignment/form/:formId/field/:fieldId', function(req, res){
             var form_id = req.params['formId'];
             var field_id = req.params['fieldId'];
@@ -23,6 +36,7 @@ module.exports = function(app, model){
             var field_index = fields.indexOf(field);
             res.send(fields[field_index]);
         });
+        */
 
         app.delete('/api/assignment/form/:formId/field/:fieldId', function(req, res){
             var form_id = req.params["formId"];
