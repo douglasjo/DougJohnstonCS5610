@@ -18,6 +18,10 @@
         }*/
 
         $scope.login = function() {
+           // UserService.findUserByCredentials($scope.username, $scope.password)
+
+
+
             var response = UserService.findUserByCredentials($scope.username, $scope.password);
             if (response == null) {
                 alert("not a valid password/username combination");
