@@ -9,22 +9,22 @@
             if ($scope.password != $scope.verify) {
                 alert("passwords do not match");
             } else  {
-                    var person = {
-                        "_id": (new Date).getTime(),
-                        "firstName": "",
-                        "lastName": "",
-                        "username": $scope.username,
-                        "password": $scope.password,
-                        "roles": [],
-                        "email": $scope.email
-                    };
-
-                    $rootScope.currentUser = person;
-                    $rootScope.isLoggedIn = true;
-                    if (UserService.hasRole(person, "admin")) {
-                        $rootScope.adminPriv = true;
-                    }
-                    $location.path('/profile');
+                var person = {
+                    "_id": (new Date).getTime(),
+                    "firstName": "",
+                    "lastName": "",
+                    "username": $scope.username,
+                    "password": $scope.password,
+                    "roles": [],
+                    "email": $scope.email
+                };
+                $rootScope.currentUser = person;
+                $rootScope.isLoggedIn = true;
+                if (UserService.hasRole(person, "admin")) {
+                    $rootScope.adminPriv = true;
+                }
+                UserService.createUser(person);
+                $location.path('/profile');
             }
         };
 

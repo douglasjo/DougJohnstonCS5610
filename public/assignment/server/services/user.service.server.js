@@ -9,13 +9,10 @@ module.exports = function (app, model) {
 
     app.post('/api/assignment/user', function (req, res) {
         console.log("create user server called");
-        //if (req.query == null) {
         var user = req.body;
         user._id = uuid.v1();
         model.createUser(user);
         res.send(model.getAllUsers());
-        //}
-
     });
 
     app.get('/api/assignment/user', function (req, res) {

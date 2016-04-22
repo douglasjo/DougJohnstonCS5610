@@ -1,7 +1,7 @@
 var q = require("q");
 var mongoose = require("mongoose");
 
-module.exports=function(mongoose) {
+module.exports=function(mongoose, db) {
     var forms = require('./form.mock.json');
     var formSchema = require("./form.schema.server.js")();
     var Form = mongoose.model("Form", formSchema);
@@ -24,7 +24,7 @@ module.exports=function(mongoose) {
             Form.find(function(err, form){
                 deferred.resolve(form);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function getFormsByUserId(userId) {
@@ -32,7 +32,7 @@ module.exports=function(mongoose) {
             Form.find({userId: userId}, function(err, form){
                 deferred.resolve(form);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function getFormById(formId) {
@@ -40,7 +40,7 @@ module.exports=function(mongoose) {
             Form.findById(userId, function(err, form){
                 deferred.resolve(form);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         /*
@@ -53,7 +53,7 @@ module.exports=function(mongoose) {
                     deferred.resolve(form);
                 });
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function deleteFormById(formId) {
@@ -64,7 +64,7 @@ module.exports=function(mongoose) {
                     deferred.resolve(form);
                 });
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function updateFormById(formId, form) {
@@ -76,7 +76,7 @@ module.exports=function(mongoose) {
                 updated: form.updated}, function(err, user){
                 deferred.resolve(user);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function findFormByTitle(title) {
@@ -84,7 +84,7 @@ module.exports=function(mongoose) {
             Form.find({title: title}, function (err, form){
                 deferred.resolve(form);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function deleteField(formId, fieldId){

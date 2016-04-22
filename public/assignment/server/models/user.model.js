@@ -1,7 +1,7 @@
 var q = require("q");
 var mongoose = require("mongoose");
 
-module.exports=function(mongoose) {
+module.exports=function(mongoose, db) {
 
     var users = require('./user.mock.json');
 
@@ -38,9 +38,9 @@ module.exports=function(mongoose) {
      */
         function createUser(user){
             var deferred = q.defer();
-            User.create(page, function(err, doc){
-                User.find(function(err, user){
-                    deferred.resolve(user);
+            User.create(user, function(err, doc){
+                User.find(function(err, response){
+                    deferred.resolve(response);
                 });
             });
             return deferred.promise;
