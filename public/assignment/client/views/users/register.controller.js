@@ -9,11 +9,6 @@
             if ($scope.password != $scope.verify) {
                 alert("passwords do not match");
             } else  {
-                var bool = UserService.findUserByUsername($scope.password);
-                bool.success(function(response){
-                    alert("username is already taken");
-                });
-                bool.err(function(){
                     var person = {
                         "_id": (new Date).getTime(),
                         "firstName": "",
@@ -30,9 +25,6 @@
                         $rootScope.adminPriv = true;
                     }
                     $location.path('/profile');
-
-                    UserService.createUser(person);
-                });
             }
         };
 

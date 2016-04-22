@@ -1,7 +1,7 @@
 var q = require("q");
 var mongoose = require("mongoose");
 
-module.exports=function(mongoose, db) {
+module.exports=function(mongoose) {
 
     var users = require('./user.mock.json');
 
@@ -22,7 +22,7 @@ module.exports=function(mongoose, db) {
             User.find(function(err, user){
                 deferred.resolve(user);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function getUserById(userId){
@@ -30,7 +30,7 @@ module.exports=function(mongoose, db) {
             User.findById(userId, function(err, user){
                 deferred.resolve(user);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
     /*
@@ -43,7 +43,7 @@ module.exports=function(mongoose, db) {
                     deferred.resolve(user);
                 });
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function deleteUserById(userId){
@@ -58,7 +58,7 @@ module.exports=function(mongoose, db) {
                     deferred.resolve(user);
                 });
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function updateUserById(userId, user){
@@ -69,7 +69,7 @@ module.exports=function(mongoose, db) {
                 password: user.password}, function(err, user){
                 deferred.resolve(user);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function findUserByUsername(username) {
@@ -77,7 +77,7 @@ module.exports=function(mongoose, db) {
             User.find({username: username}, function (err, user){
                 deferred.resolve(user);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
         function findUserByCredentials(credentials) {
@@ -88,7 +88,7 @@ module.exports=function(mongoose, db) {
             User.find({username: username, password: password}, function (err, user){
                 deferred.resolve(user);
             });
-            return deferred.promise.data;
+            return deferred.promise;
         }
 
 };

@@ -17,7 +17,7 @@ module.exports = function (app, model) {
         //}
 
     });
-    //add rest in front?
+
     app.get('/api/assignment/user', function (req, res) {
         console.log("get server called");
         if (req.query.username && req.query.password) {
@@ -42,61 +42,7 @@ module.exports = function (app, model) {
             res.send(all_users);
         }
     });
-    /*
-     app.get('/api/assignment/user/:id', function (req, res) {
 
-     /*var person = users.filter(function (user) {
-     return user.id == id;
-     });
-     var user_index = users.indexOf(person);
-     console.log("sending user back to client.." + user_index);
-     */
-    /*
-     var id = req.params["id"];
-     var result = model.getUserById(id);
-
-     res.send(result);
-     //res.send(users[user_index]);
-     });*/
-    /*
-     app.get('/api/assignment/user?username=username', function (req, res) {
-     console.log("what the heck");
-     var urlUsername = window.location.search;
-     var username = urlUsername.substring(10);
-     console.log("username is:" +  username);
-     var person = model.findUserByUsername(username);
-     res.send(person);
-     });*/
-
-    /*
-     app.get('/api/assignment/user?username=alice&password=wonderland', function (req, res) {
-     console.log("getby credentials server called");
-     var credentials = {alice, alice};
-     //var credentials = req.body;
-     // var username = req.query.username;
-     // var password = req.query.password;
-     /*
-     var query = window.location.search;
-     var splitIndex = query.indexOf("&");
-     var username = urlUsername.substring(10, splitIndex);
-     var secondHalf = query.substring(splitIndex);
-     var password = secondHalf.substring(10);
-     */
-    //var credentials= {username: username, password: password};
-
-    //console.log('username=' + username);
-    //console.log("password is " + password);
-    /*
-     var person = model.findUserByCredentials(credentials);
-     res.send(person);
-     });*/
-    /*
-     app.get("/api/assignment/user?username=:/username/password:/password", function (req, res) {
-     console.log("getby credentials server called");
-     var credentials = {username: req.params.username, password: req.params.password};
-     var person = model.findUserByCredentials(credentials);
-     res.send(person);
-     });*/
 
     app.delete("/api/assignment/user/:id", function (req, res) {
         //console.log("server side deleting...");

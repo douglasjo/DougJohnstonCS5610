@@ -18,13 +18,9 @@
         }*/
 
         $scope.login = function() {
-           // UserService.findUserByCredentials($scope.username, $scope.password)
-
-
-
             var person = UserService.findUserByCredentials($scope.username, $scope.password);
             person.success(function(response){
-                $rootScope.currentUser= response.data;
+                $rootScope.currentUser= response;
                 $rootScope.isLoggedIn = true;
                     if (UserService.hasRole(response.data, "admin")) {
                         $rootScope.adminPriv = true;
