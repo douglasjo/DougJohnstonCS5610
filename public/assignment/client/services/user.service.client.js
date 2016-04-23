@@ -33,11 +33,17 @@
                 var credentials = {username: username, password: password};
                 console.log("client username is: " + credentials.username);
                 console.log("client password is: " + credentials.password);
-                $http
+                /*$http
                     .get("/api/assignment/user?username="+ username + "&password="+ password)
                     .then(function(response){
                         deferred.resolve(response);
-                    });
+                    });*/
+                $http
+                 .get("/api/assignment/test")
+                 .then(function(response){
+                    console.log("by credentials!");
+                    deferred.resolve(response);
+                 });
                 return deferred.promise;
             },
 

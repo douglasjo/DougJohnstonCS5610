@@ -18,15 +18,24 @@
         }*/
 
         $scope.login = function() {
-            var person = UserService.findUserByCredentials($scope.username, $scope.password);
-            person.success(function(response){
+            //var person = UserService.findUserByCredentials($scope.username, $scope.password);
+            /*person.then(function(response){
                 $rootScope.currentUser= response;
                 $rootScope.isLoggedIn = true;
-                    if (UserService.hasRole(response.data, "admin")) {
+                    if (UserService.hasRole(response, "admin")) {
                         $rootScope.adminPriv = true;
                     }
-                $location.path('/profile');
-            });
+                $location.path('/profile');*/
+
+                UserService.findUserByCredentials($scope.username, $scope.password)
+                    .then(function(response) {
+                        $rootScope.currentUser = response;
+                        $rootScope.isLoggedIn = true;
+                        if (UserService.hasRole(response, "admin")) {
+                            $rootScope.adminPriv = true;
+                        }
+                        $location.path('/profile');
+                    });
 
 /*
             if (response == null) {
