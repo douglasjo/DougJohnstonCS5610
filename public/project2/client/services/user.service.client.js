@@ -1,25 +1,3 @@
-passport.serializeUser(serializeUser);
-passport.deserializeUser(deserializeUser);
-
-function serializeUser(user, done) {
-    done(null, user);
-}
-
-function deserializeUser(user, done) {
-    userModel
-        .findUserById(user._id)
-        .then(
-            function(user){
-                done(null, user);
-            },
-            function(err){
-                done(err, null);
-            }
-        );
-}
-
-
-
 (function() {
     angular
         .module("FormBuilderApp")
@@ -27,21 +5,6 @@ function deserializeUser(user, done) {
 
     function UserService($http, $q) {
         return {
-
-            login: function(req, res) {
-            var user = req.user;
-            res.json(user);
-        },
-
-         logout: function(req, res) {
-            req.logOut();
-            res.send(200);
-        },
-
-         loggedin: function(req, res) {
-            res.send(req.isAuthenticated() ? req.user : '0');
-        },
-
 
             getUserById: function(userId) {
                 var deferred = $q.defer();

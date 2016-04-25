@@ -1,0 +1,45 @@
+<!DOCTYPE html>brw
+<html lang="en" ng-app="FormBuilderApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <link href="dashboard.css" rel="stylesheet">
+
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+
+    <script src="views/users/login.controller.js"></script>
+    <script src="views/users/profile.controller.js"></script>
+    <script src="views/users/register.controller.js"></script>
+    <script src="views/admin/admin.controller.js"></script>
+    <script src="views/forms/forms.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+
+    <script src="views/forms/forms.controller.js"></script>
+    <script src="views/forms/fields.controller.js"></script>
+
+
+    <script src="services/forms.service.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
+
+</head>
+
+<body>
+<div class="container" ng-controller="MainController">
+    <h2>Form Maker</h2>
+    <div ng-include src="'views/header/header.view.html'"></div>
+    <span ng-include src="'views/sidebar/sidebar.view.html'"></span>
+    <div ng-view></div>
+</div>
+</body>
+</html>

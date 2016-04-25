@@ -1,0 +1,19 @@
+
+<nav class= "container-fluid navbar" ng-controller="SidebarController">
+    <div class="row .leftside">
+        <div class="col-sm-3 col-md-2 .sidebar sidebar-left">
+            <ul class="nav .navbar-nav .nav-sidebar nav-pills nav-stacked">
+                <li ng-class="{'active' : $location.url() == '/home'}" >
+                    <a href="#/home" >Home </a></li>
+                <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="isLoggedIn">
+                    <a href="#/profile" >Profile</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="adminPriv">
+                    <a href="#/admin" >Admin</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('forms') !=-1 }" ng-show="isLoggedIn">
+                    <a href="#/forms" >Forms</a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+

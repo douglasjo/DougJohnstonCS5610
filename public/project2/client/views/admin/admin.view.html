@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+</head>
+
+<body>
+{{$isLoggedIn}}
+{{$currentUser.firstName}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Admin</h1>
+            <h3 class="sub-header">Users</h3>
+
+            <table class="table table-responsive table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                            <input type="text" placeholder="name">
+                    </td>
+                    <td>
+                            <input type="password" placeholder="password">
+                    </td>
+                    <td>
+                            <input type="text" placeholder="role1, role2">
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Alice</td>
+                    <td></td>
+                    <td>student</td>
+                    <td>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bob</td>
+                    <td></td>
+                    <td>faculty | admin</td>
+                    <td>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Charlie</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
