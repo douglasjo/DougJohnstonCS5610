@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 var upload = multer();
 
-app.use(express.static(__dirname + '/public/assignment/client'));
+app.use(express.static(__dirname + '/public/project2/client'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -14,7 +14,7 @@ var mongoose = require('mongoose');
 var db = mongoose.connection;
 mongoose.connect('mongodb://localhost/assignment');
 
-
+/*
 var passport      = require('passport');
 var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
@@ -27,6 +27,7 @@ app.use(session({
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+*/
 
 //mongoose.connect('mongodb://localhost/project');
 

@@ -1,38 +1,5 @@
 var uuid = require('node-uuid');
-var passport      = require('passport');
-var auth = authorized;
-app.post  ('/api/login', passport.authenticate('local'), login);
-app.post  ('/api/logout',         logout);
-app.post  ('/api/register',       register);
-app.post  ('/api/user',     auth, createUser);
-app.get   ('/api/loggedin',       loggedin);
-app.get   ('/api/user',     auth, findAllUsers);
-app.put   ('/api/user/:id', auth, updateUser);
-app.delete('/api/user/:id', auth, deleteUser);
 
-function authorized (req, res, next) {
-    if (!req.isAuthenticated()) {
-        res.send(401);
-    } else {
-        next();
-    }
-}
-
-var userModel = require("../models/user.model.js")();
-passport.use(new LocalStrategy(localStrategy));
-function localStrategy(username, password, done) {
-    userModel
-        .findUserByCredentials({username: username, password: password})
-        .then(
-            function(user) {
-                if (!user) { return done(null, false); }
-                return done(null, user);
-            },
-            function(err) {
-                if (err) { return done(err); }
-            }
-        );
-}
 
 
 /*var passport = require('passport');
@@ -40,8 +7,7 @@ function localStrategy(username, password, done) {
 
 module.exports = function (app, model) {
 
-    app.post('/api/assignment/user', passport.authenticate('basic', { session: false }),
-        function (req, res) {
+    app.post('/api/assignment/user', function (req, res) {
         console.log("create user server called");
         var user = req.body;
         user._id = uuid.v1();

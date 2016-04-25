@@ -1,23 +1,3 @@
-passport.serializeUser(serializeUser);
-passport.deserializeUser(deserializeUser);
-
-function serializeUser(user, done) {
-    done(null, user);
-}
-
-function deserializeUser(user, done) {
-    userModel
-        .findUserById(user._id)
-        .then(
-            function(user){
-                done(null, user);
-            },
-            function(err){
-                done(err, null);
-            }
-        );
-}
-
 
 
 (function() {
