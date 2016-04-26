@@ -3,53 +3,35 @@
     angular
         .module("ProjectApp")
         .controller("AdminController", AdminController);
-    function AdminController($scope, $rootScope, FormService) {
+    function AdminController($scope, $rootScope, UserService) {
         $scope.selectedUser= {};
         var selectedId = 1;
-        $scope.allUsers = Userervice.findAllUsers();
+        $scope.allUsers = UserService.findAllUsers();
 
         $scope.addUser = function() {
             var newUser = {
-                "title": $scope.selectedTitle,
+                "Username": $scope.selectedUsername,
                 "userId": $rootScope.currentUser._id,
                 "_id": (new Date).getTime()
             };
-            //console.log("id is: " + $rootScope.currentUser._id);
-            //console.log("newform is: " + newForm);
-            DocService.createDocForUser($rootScope.currentUser._id, newDoc);
-
-            $scope.allUsers = FormService.findAllUsers();
+            DocService.createUser(newUser);
+            $scope.allUsers = UserService.findAllUsers();
         };
 
-        $scope.updateDoc = function() {
-            //console.log("updateform called");
-            $rootScope.doc=$scope.selecteddoc;
-            $scope.selectedDoc.title= $scope.selectedTitle;
-            FormService.updateDocById($scope.formId, $scope.selectedDoc);
+        $scope.updateUser = function() {
+            $scope.selectedUser.Username= $scope.selectedUsername;
+            UserService.updateUser($scope.userId, $scope.selectedUser);
         };
 
-        $scope.deleteDoc = function($index) {
-            var docId = $scope.myDocs[$index]._id;
-            DocService.deleteDocById(docId);
-            //console.log($scope.myForms);
-            //console.log($index);
-            //$scope.myForms.splice($index, 1);
+        $scope.deleteUser = function($index) {
+            var userId = $scope.allUsers[$index]._id;
+            UserService.deleteUser(userId);
         };
 
-        $scope.selectDoc = function($index) {
-            $scope.selectedDoc=$scope.myDocs[$index];
-            $scope.selectedTitle=$scope.selectedDoc.title;
-            $rootScope.form=$scope.selectedDoc;
+        $scope.selectUser = function($index) {
+            $scope.selectedUser=$scope.allUsers[$index];
+            $scope.selectedUsername=$scope.selectedUser.Username;
         };
-        /*
-         $scope.fieldClick = function() {
-         //$scope.showFields=true;
-         if (selectedForm != null) {
-         $location='form/'+ selectedForm._id + '/fields';
-         }
 
-
-         //$scope.fieldTarget = fields.view.html;
-         };*/
     }
 })();

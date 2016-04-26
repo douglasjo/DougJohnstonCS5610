@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .factory("UserService", UserService);
 
     function UserService($http, $q) {

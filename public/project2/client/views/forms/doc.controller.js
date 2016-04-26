@@ -3,7 +3,7 @@
     angular
         .module("ProjectApp")
         .controller("DocController", DocController);
-    function DocController($scope, $rootScope, FormService) {
+    function DocController($scope, $rootScope, DocService) {
         //$scope.showFields=false;
         $scope.selectedDoc= {};
         var selectedId = 1;
