@@ -5,7 +5,7 @@
         .controller("DocController", DocController);
     function DocController($scope, $rootScope, FormService) {
         //$scope.showFields=false;
-        $scope.selectedForm= {};
+        $scope.selectedDoc= {};
         var selectedId = 1;
         $scope.myDocs = DocService.findAllDocsForUser($rootScope.currentUser._id);
 
@@ -21,9 +21,7 @@
             //console.log("id is: " + $rootScope.currentUser._id);
             //console.log("newform is: " + newForm);
             DocService.createDocForUser($rootScope.currentUser._id, newDoc);
-
-            $scope.myDocs = FormService.findAllDocsForUser($rootScope.currentUser._id,
-                (function (response) {return response}))
+            $scope.myDocs = FormService.findAllDocsForUser($rootScope.currentUser._id);
         };
 
         $scope.updateDoc = function() {
