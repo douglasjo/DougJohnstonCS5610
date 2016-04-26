@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Forms</title>
+    <title>My Documents</title>
 </head>
 
 <body>
@@ -12,38 +12,36 @@
             <h1 class="page-header">Forms</h1>
             <label for="table1">
                 <ul class="nav nav-tabs" ng-init>
-                    <li><a>Forms</a></li>
-                    <li><a href={{fieldUrl}}>Fields</a></li>
+                    <li><a>Documents</a></li>
                 </ul>
             </label>
 
-            <!--<div ng-show="showFields">{{fieldTarget}}</div>-->
 
             <table id="table1" class="table table-responsive table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Form Name</th>
+                    <th>Document Name</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" id="selectedTitle"
+                        <input type="text" class="doc-control" id="selectedTitle"
                                ng-model="selectedTitle">
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit" ng-click="addForm()">
+                        <button class="btn btn-default" type="submit" ng-click="addDoc()">
                             <span class="glyphicon glyphicon-plus"></span></button>
-                        <button class="btn btn-default" type="submit" ng-click="updateForm()">
+                        <button class="btn btn-default" type="submit" ng-click="updateDoc()">
                             <span class="glyphicon glyphicon-ok"></span></button>
                     </td>
                 </tr>
                 <tr ng-repeat="td_form in myForms track by $index">
                     <td>{{td_form.title}}</td>
                     <td class="form-group">
-                        <button class="btn btn-default" type="submit" ng-click="deleteForm($index)">
+                        <button class="btn btn-default" type="submit" ng-click="deleteDoc($index)">
                             <span class="glyphicon glyphicon-remove"></span></button>
-                        <button class="btn btn-default" type="submit" ng-click="selectForm($index)">
+                        <button class="btn btn-default" type="submit" ng-click="selectDoc($index)">
                             <span class="glyphicon glyphicon-pencil"></span></button>
                     </td>
                 </tr>
