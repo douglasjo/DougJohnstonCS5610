@@ -1,7 +1,7 @@
 "use strict";
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .config(function($routeProvider){
             $routeProvider
                 .when("/home", {

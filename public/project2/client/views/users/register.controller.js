@@ -1,7 +1,7 @@
 "use strict";
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
 
         .controller("RegisterController", RegisterController);
     function RegisterController($scope, $rootScope, $location, UserService) {

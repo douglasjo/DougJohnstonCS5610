@@ -1,7 +1,7 @@
 "use strict";
 (function() {
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .controller("LoginController", LoginController);
     function LoginController($scope, $rootScope, $location, UserService) {
         /*function nav(response) {
