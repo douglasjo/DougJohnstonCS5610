@@ -1,7 +1,7 @@
 "use strict";
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .controller("SidebarController", SidebarController);
     function SidebarController($scope, $rootScope) {
     }

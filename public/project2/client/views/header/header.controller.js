@@ -1,7 +1,7 @@
 "use strict";
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .controller("HeaderController", HeaderController);
     function HeaderController($scope, $rootScope) {
         $scope.logOut = function(){

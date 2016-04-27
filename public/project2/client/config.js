@@ -41,7 +41,7 @@
                     controller: "FavoredController"
                 })
                 .otherwise({
-                    redirectTo: "/"
+                    redirectTo: "/home"
                 });
         });
 })();

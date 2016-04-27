@@ -38,7 +38,6 @@
                 "password": $scope.password,
                 "email": $scope.email
             };
-            console.log("update");
             $rootScope.currentUser = person;
             UserService.updateUser(person._id, person, $scope.updateLogin);
         };

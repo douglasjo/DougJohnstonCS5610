@@ -5,7 +5,6 @@
         .controller("AdminController", AdminController);
     function AdminController($scope, $rootScope, UserService) {
         $scope.selectedUser= {};
-        var selectedId = 1;
         $scope.allUsers = UserService.findAllUsers();
 
         $scope.addUser = function() {
@@ -18,11 +17,6 @@
             $scope.allUsers = UserService.findAllUsers();
         };
 
-        $scope.updateUser = function() {
-            $scope.selectedUser.Username= $scope.selectedUsername;
-            UserService.updateUser($scope.userId, $scope.selectedUser);
-        };
-
         $scope.deleteUser = function($index) {
             var userId = $scope.allUsers[$index]._id;
             UserService.deleteUser(userId);
@@ -33,5 +27,16 @@
             $scope.selectedUsername=$scope.selectedUser.Username;
         };
 
+        $scope.update = function() {
+            var person = {"_id": $scope.selectedUser._id,
+                "firstName": $scope.firstName,
+                "lastName": $scope.lastName,
+                "username": $scope.username,
+                "password": $scope.password,
+                "email": $scope.email
+            };
+            $rootScope.currentUser = person;
+            UserService.updateUser(person._id, person, $scope.updateLogin);
+        };
     }
 })();
