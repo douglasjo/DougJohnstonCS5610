@@ -10,7 +10,7 @@
             createFormForUser: function(userId, form) {
                 var deferred = $q.defer();
                 $http
-                    .post("/api/assignment/form/:" + userId+ '/form', form)
+                    .post("/api/assignment/user/:" + userId+ '/form', form)
                     .then(function(response){
                         deferred.resolve(response);
                     });

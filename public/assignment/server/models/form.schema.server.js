@@ -14,8 +14,3 @@ module.exports = function () {
 
     return formSchema;
 };
-
-
-
-
-//return form;

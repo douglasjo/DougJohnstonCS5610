@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+</head>
+
+<body>
+
+<div class="container-fluid" ng-controller="AdminController">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Admin</h1>
+            <label for="table1">
+                <ul class="nav nav-tabs" ng-init>
+                    <li><a>Current Users</a></li>
+                </ul>
+            </label>
+
+
+            <table id="table1" class="table table-responsive table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" id="selectedTitle"
+                               ng-model="selectedName">
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="submit" ng-click="addUser()">
+                            <span class="glyphicon glyphicon-plus"></span></button>
+                        <button class="btn btn-default" type="submit" ng-click="updateUser()">
+                            <span class="glyphicon glyphicon-ok"></span></button>
+                    </td>
+                </tr>
+                <tr ng-repeat="td_user in allUsers track by $index">
+                    <td>{{td_user.Username}}</td>
+                    <td class="form-group">
+                        <button class="btn btn-default" type="submit" ng-click="deleteUser($index)">
+                            <span class="glyphicon glyphicon-remove"></span></button>
+                        <button class="btn btn-default" type="submit" ng-click="selectUser($index)">
+                            <span class="glyphicon glyphicon-pencil"></span></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- myModal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit User Data</h4>
+            </div>
+
+            <div class="modal-body">
+                <label for="content">Content</label>
+                <textarea id="content"  ng-model="document_content"></textarea>
+
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="userName" class="col-sm-2 control-label">Username   </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="userName"
+                                    ng-model="username">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="Password"
+                                    ng-model="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-2 control-label">First Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="firstName"
+                                    ng-model="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="lastName"
+                                    ng-model="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email"
+                                    ng-model="email">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="update()">Ok</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

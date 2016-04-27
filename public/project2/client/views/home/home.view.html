@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Welcome !</h1>
+            <p>
+                Welcome! This site is intended to help writers share their work with others for review, while making it easy for you to keep control over who sees your work, and to get helpful feedback on it.
+            </p>
+
+            <label for="search">Looking for a particular user? See their ratings here.</label>
+            <input type="text" id="search" ng-model="search">
+            <button class="btn btn-default" type="submit" ng-click="searchForUser()">
+                Search</button>
+            {{output}}
+        </div>
+    </div>
+
+</div>
+
+

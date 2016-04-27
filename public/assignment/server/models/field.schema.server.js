@@ -13,6 +13,3 @@ module.exports = function () {
     return fieldSchema;
 };
 
-
-
-//var field = mongoose.model(fieldSchema);

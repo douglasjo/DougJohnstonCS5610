@@ -1,27 +1,10 @@
-
-
 (function() {
     angular
-        .module("FormBuilderApp")
+        .module("ProjectApp")
         .factory("UserService", UserService);
 
     function UserService($http, $q) {
         return {
-
-            login: function(req, res) {
-            var user = req.user;
-            res.json(user);
-        },
-
-         logout: function(req, res) {
-            req.logOut();
-            res.send(200);
-        },
-
-         loggedin: function(req, res) {
-            res.send(req.isAuthenticated() ? req.user : '0');
-        },
-
 
             getUserById: function(userId) {
                 var deferred = $q.defer();
@@ -44,19 +27,21 @@
                 return user.roles.find(matchRole);
             },
 
-            findUserByCredentials: function(username, password) {
+            addOrDeleteFavoredReviewer: function(userId, index, bool, user) {
                 var deferred = $q.defer();
-
-                var credentials = {username: username, password: password};
-                console.log("client username is: " + credentials.username);
-                console.log("client password is: " + credentials.password);
-                /*$http
-                    .get("/api/assignment/user?username="+ username + "&password="+ password)
+                $http
+                    .put("/api/assignment/user" + userId + index + bool, user)
                     .then(function(response){
                         deferred.resolve(response);
-                    });*/
+                    });
+                return deferred.promise;
+            },
+
+            findUserByCredentials: function(username, password) {
+                var deferred = $q.defer();
+                var credentials = {username: username, password: password};
                 $http
-                 .get("/api/assignment/test")
+                 .get("/api/assignment/user?username=" + username +"&password=" + password)
                  .then(function(response){
                     console.log("by credentials!");
                     deferred.resolve(response);

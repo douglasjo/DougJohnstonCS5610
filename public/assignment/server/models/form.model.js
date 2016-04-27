@@ -1,5 +1,7 @@
 var q = require("q");
-module.exports=function(mongoose) {
+var mongoose = require("mongoose");
+
+module.exports=function(mongoose, db) {
     var forms = require('./form.mock.json');
     var formSchema = require("./form.schema.server.js")();
     var Form = mongoose.model("Form", formSchema);
@@ -11,220 +13,92 @@ module.exports=function(mongoose) {
             createForm: createForm,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
-            findFormByTitle: findFormByTitle
+            findFormByTitle: findFormByTitle,
+            deleteField: deleteField,
+            updateField: updateField,
+            createField: createField
         };
 
         function getAllForms() {
-            /*var deferred = q.defer();
-            Form.find({}, function(err, form) {
-                if (!err) {
-                    deferred.resolve (form);
-                } else {
-                    deferred.reject (err);
-                }
-            return deferred.promise;
-            });*/
-            /*
             var deferred = q.defer();
-            Form.find({}, function(err, form) {
-                var formMap = {};
-                forms.forEach(function(sheet) {
-                    formMap[form._id] = sheet;
-                });
-                return userMap;
-            });*/
-
-
-            return forms;
-
-            /*
-             var deferred = $q.defer();
-             $http
-             .get('/api/assignment/form')
-             .then(function(response){
-             deferred.resolve(response);
-             });
-             return deferred.promise;*/
+            Form.find(function(err, form){
+                deferred.resolve(form);
+            });
+            return deferred.promise;
         }
 
-        function getFormByUserId(userId) {
-            /*var deferred = q.defer();
-            Form.find({userId: userId},
-                function (err, form) {
-                    if (!err) {
-                        deferred.resolve (form);
-                    } else {
-                        deferred.reject (err);
-                    }
-                });
-            return deferred.promise;*/
-
-
-            function grab (form){
-                return (form.userId == userId);
-            }
-            var myforms = forms.filter(grab);
-            return myforms;
+        function getFormsByUserId(userId) {
+            var deferred = q.defer();
+            Form.find({userId: userId}, function(err, form){
+                deferred.resolve(form);
+            });
+            return deferred.promise;
         }
 
         function getFormById(formId) {
-            /*var deferred = q.defer();
-            Form.find({_id: formId},
-                function (err, form) {
-                    if (!err) {
-                        deferred.resolve (form);
-                    } else {
-                        deferred.reject (err);
-                    }
-                });
-            return deferred.promise;*/
-
-            function sameId(form) {
-                return (form._id == formId);
-            }
-            return forms.find(sameId);
-
-            /*
-             var deferred = $q.defer();
-             var url = '/api/assignment/form/:' +formId;
-             $http
-             .get(url)
-             .then(function(response){
-             deferred.resolve(response);
-             });
-             return deferred.promise;*/
+            var deferred = q.defer();
+            Form.findById(userId, function(err, form){
+                deferred.resolve(form);
+            });
+            return deferred.promise;
         }
 
+        /*
+        might be a problem with this
+         */
         function createForm(form) {
-            /*var deferred = q.defer();
-            Form.create(form,
-                function (err, form) {
-                    if (!err) {
-                        deferred.resolve (form);
-                    } else {
-                        deferred.reject (err);
-                    }
+            var deferred = q.defer();
+            Form.create(page, function(err, doc){
+                Form.find(function(err, form){
+                    deferred.resolve(form);
                 });
-            return deferred.promise;*/
-
-
-            var newForm = {
-                _id: form._id,
-                title: form.title,
-                userId: form.userId,
-                fields: form.fields
-            };
-            forms.push(newForm);
-
-            /*
-             var deferred = $q.defer();
-             var url = "/api/assignment/user/:" + userId +"/form";
-             $http
-             .post(url)
-             .then(function(response){
-             deferred.resolve(response);
-             });
-             return deferred.promise;*/
+            });
+            return deferred.promise;
         }
 
         function deleteFormById(formId) {
-            /*var deferred = q.defer();
-            Form.remove({_id: formId},
-                function (err, form) {
-                    if (!err) {
-                        deferred.resolve (form);
-                    } else {
-                        deferred.reject (err);
-                    }
+            var deferred = q.defer();
+            Form.findById(userId, function(err, doc) {
+                doc.remove();
+                From.find(function(err, form) {
+                    deferred.resolve(form);
                 });
-            return deferred.promise;*/
-
-
-            function checkDelete(form) {
-                if (formId == form._id) {
-                    var index = forms.indexOf(form);
-                    forms.splice(index, 1);
-                }
-            }
-            forms.forEach(checkDelete);
-            return forms;
-            /*
-             var deferred = $q.defer();
-             var url = "/api/assignment/form/:" + formId;
-             $http
-             .delete(url)
-             .then(function(response){
-             deferred.resolve(response);
-             });
-             return deferred.promise;*/
+            });
+            return deferred.promise;
         }
 
         function updateFormById(formId, form) {
-            /*var deferred = q.defer();
-            Form.update({_id: formId},
-                function (err, form) {
-                    if (!err) {
-                        deferred.resolve (form);
-                    } else {
-                        deferred.reject (err);
-                    }
-                });
-            return deferred.promise;*/
-
-            function sameId(oldForm) {
-                return (oldForm._id == userId);
-            }
-
-            var sheet = forms.find(sameId);
-            var index = forms.indexOf(sheet);
-            forms[index] = {
-                _id: form._id,
+            var deferred = q.defer();
+            User.update({_Id: formId}, {userId: form.userId,
                 title: form.title,
-                fields: form.fields
-            };
-            return forms[index];
-
-
-            /*
-            var sheet = getFormById(formId);
-            var index = forms.indexOf(sheet);
-            forms[index] = {
-                _id: newForm._id,
-                title: newForm.title,
-                userId: newForm.userId,
-                fields: newForm.fields
-            };*/
-            //return newForm;
+                fields: form.fields,
+                created: form.created,
+                updated: form.updated}, function(err, user){
+                deferred.resolve(user);
+            });
+            return deferred.promise;
         }
 
         function findFormByTitle(title) {
-            /*var deferred = q.defer();
-            Form.find({title: title},
-                function (err, form) {
-                    if (!err) {
-                        deferred.resolve (form);
-                    } else {
-                        deferred.reject (err);
-                    }
-                });
-            return deferred.promise;*/
-
-
-            function grab (form){
-                return (form.title == title);
-            }
-            var myforms = forms.filter(grab);
-            return myforms;
-
-            /*
-             var deferred = $q.defer();
-             var url = "/api/assignment/form/title/:" + title;
-             $http
-             .get(url)
-             .then(function(response){
-             deferred.resolve(response);
-             });
-             return deferred.promise;*/
+            var deferred = q.defer();
+            Form.find({title: title}, function (err, form){
+                deferred.resolve(form);
+            });
+            return deferred.promise;
         }
+
+        function deleteField(formId, fieldId){
+            var deferred = q.defer();
+
+        }
+
+        function updateField(formId, fieldId, field){
+
+        }
+
+        function createField(formId, field){
+
+        }
+
     })()
 };

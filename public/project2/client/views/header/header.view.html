@@ -1,0 +1,25 @@
+
+<nav class= "container-fluid navbar .top" ng-controller="HeaderController">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Form Maker</a>
+    </div>
+    <ul class="nav .navbar-nav .navbar-right  nav-pills pull-right">
+        <li ng-class="{'active' : $location.url().indexOf('register') !=-1}" ng-hide="isLoggedIn"
+            ng-click="$rootScope.navigate()">
+            <a href="#/register" >Register </a></li>
+        <li ng-class="{'active' : $location.url().indexOf('login') !=-1 }" ng-hide="isLoggedIn"
+            ng-click="$rootScope.navigate()">
+            <a href="#/login">Login</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="isLoggedIn"
+            ng-click="$rootScope.navigate()">
+            <a href="#/profile" >Profile</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="adminPriv"
+            ng-click="$rootScope.navigate()">
+            <a href="#/admin" >Admin</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('logout') !=-1 }" ng-show="isLoggedIn"
+            ng-click="$rootScope.navigate()">
+            <a href="#/home" ng-click="logOut()">Logout</a></li>
+        <li><a href="$rootscope.last">Back</a></li>
+    </ul>
+</nav>
+
