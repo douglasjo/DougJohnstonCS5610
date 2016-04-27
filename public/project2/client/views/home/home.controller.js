@@ -12,7 +12,7 @@
             $scope.query = '';
             $scope.hits = [];
 
-            index.search($scope.search)
+            index.search($scope.search, "Username", "courtesy", "constructiveness", "clarity")
                 .then(function searchSuccess(content) {
                     $scope.output=content;
                 }, function searchFailure(err) {
