@@ -109,9 +109,12 @@
                 </table>
                 <label for="reviewer">Reviewer</label>
                 <input type="text" id="reviewer" ng-model="revName">
-                <button class="btn btn-default" name="addRev" type="submit" ng-click="addReviewer()">
+                <button class="btn btn-default" type="submit" ng-click="addReviewer()">
                     Add a Reviewer</button>
             </div>
+
+            <button class="btn btn-default" type="submit" ng-click="addAllFavoredReviewers()">
+                Add all Favored Reviewers</button>
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="updateDoc()">Ok</button>

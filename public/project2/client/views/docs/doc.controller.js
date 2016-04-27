@@ -11,6 +11,13 @@
             ReviewService.addReviewer($scope.selectedDoc._id, $scope.revName);
         };
 
+        $scope.addAllFavoredReviewer = function(){
+            var favored = $rootScope.currentUser.reviewers;
+            for (var i = 0; i<favored.length; i++){
+                ReviewService.addReviewer($scope.selectedDoc._id,favored[i]);
+            }
+        };
+
         $scope.rateReview = function($index) {
             var review = selectedDoc.reviews[$index];
             var newReview = {
