@@ -17,6 +17,7 @@
                 return deferred.promise;
             },
 
+
             findAllDocsForUser: function (userId) {
                 var deferred = $q.defer();
                 $http

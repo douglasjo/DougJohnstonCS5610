@@ -3,14 +3,22 @@
     angular
         .module("ProjectApp")
         .controller("DocController", DocController);
-    function DocController($scope, $rootScope, DocService) {
-        //$scope.showFields=false;
+    function DocController($scope, $rootScope, DocService, ReviewService) {
         $scope.selectedDoc= {};
-        var selectedId = 1;
         $scope.myDocs = DocService.findAllDocsForUser($rootScope.currentUser._id);
 
-
-        //$scope.fieldUrl="#/form/"+ selectedId + "formId/fields";
+        $scope.rateReview = function($index) {
+            var review = selectedDoc.reviews[$index];
+            var newReview = {
+                "_id": review._id,
+                "username": review.username,
+                constructiveness: $scope.constructiveness,
+                clarity: $scope.clarity,
+                courtesy: $scope.courtesy,
+                content: review.content
+            };
+            ReviewService.updateReview($scope.selectedDoc._id, review._id, newReview);
+        };
 
         $scope.addDoc = function() {
             var newDoc = {
@@ -23,7 +31,6 @@
         };
 
         $scope.updateDoc = function() {
-            //console.log("updateform called");
             $rootScope.doc=$scope.selecteddoc;
             $scope.selectedDoc.title= $scope.selectedTitle;
             FormService.updateDocById($scope.formId, $scope.selectedDoc);
@@ -39,15 +46,5 @@
             $scope.selectedTitle=$scope.selectedDoc.title;
             $rootScope.form=$scope.selectedDoc;
         };
-/*
-        $scope.fieldClick = function() {
-            //$scope.showFields=true;
-            if (selectedForm != null) {
-                $location='form/'+ selectedForm._id + '/fields';
-            }
-
-
-            //$scope.fieldTarget = fields.view.html;
-        };*/
     }
 })();

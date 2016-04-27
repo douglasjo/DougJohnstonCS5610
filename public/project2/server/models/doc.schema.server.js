@@ -5,7 +5,7 @@ module.exports = function () {
 
     var docSchema = new mongoose.Schema ({
         userId: String,
-        sharedwith: [String],
+        sharedWith: [String],
         title: String,
         content: String,
         reviews: [reviewSchema],

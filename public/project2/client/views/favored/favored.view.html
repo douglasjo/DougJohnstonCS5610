@@ -26,10 +26,16 @@
                 </thead>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" id="selectedTitle"
+                        <input type="text" class="form-control" id="toAdd"
                                ng-model="selectedName">
                     </td>
+                    <td>
+                        <button class="btn btn-default" type="submit" ng-click="addUser()">
+                            <span class="glyphicon glyphicon-plus"></span></button>
+                    </td>
                 </tr>
+
+
                 <tr ng-repeat="td_user in myUsers track by $index">
                     <td>td_user</td>
                     <td class="form-group">

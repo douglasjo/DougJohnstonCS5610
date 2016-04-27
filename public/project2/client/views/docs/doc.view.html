@@ -67,6 +67,45 @@
             <div class="modal-body">
                 <label for="content">Content</label>
                     <textarea id="content"  ng-model="document_content"></textarea>
+
+                <table id="reviews" class="table table-responsive table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Review</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+
+                    <tr ng-repeat="td_review in myReviews track by $index">
+                        <td>{{td_review.username}}</td>
+                        <td>{{td_review.content}}</td>
+                        <form id="rev">
+                            Courtesy: <br>
+                            <input type = "radio" name = "courtesy" value = 1>
+                            <input type = "radio" name = "courtesy" value = 2>
+                            <input type = "radio" name = "courtesy" value = 3 checked>
+                            <input type = "radio" name = "courtesy" value = 4>
+                            <input type = "radio" name = "courtesy" value = 5>
+                            Constructiveness: <br>
+                            <input type = "radio" name = "constructiveness" value = 1>
+                            <input type = "radio" name = "constructiveness" value = 2>
+                            <input type = "radio" name = "constructiveness" value = 3 checked>
+                            <input type = "radio" name = "constructiveness" value = 4>
+                            <input type = "radio" name = "constructiveness" value = 5>
+                            Clarity: <br>
+                            <input type = "radio" name = "clarity" value = 1>
+                            <input type = "radio" name = "clarity" value = 2>
+                            <input type = "radio" name = "clarity" value = 3 checked>
+                            <input type = "radio" name = "clarity" value = 4>
+                            <input type = "radio" name = "clarity" value = 5>
+                        </form>
+
+                        <td class="form-group">
+                            <button class="btn btn-default" type="submit" ng-click="rateReview($index)">
+                                <span class="glyphicon glyphicon-ok"></span></button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             
             <div class="modal-footer">

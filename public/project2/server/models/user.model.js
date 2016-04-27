@@ -12,7 +12,8 @@ module.exports=function(mongoose, db) {
         updateUserById : updateUserById,
         findUserByUsername : findUserByUsername,
         findUserByCredentials : findUserByCredentials,
-        deleteReviewer: deleteReviewer
+        deleteReviewer: deleteReviewer,
+        addReviewer: addReviewer
     };
 
         function getAllUsers(){
@@ -42,6 +43,14 @@ module.exports=function(mongoose, db) {
             });
             return deferred.promise;
         }
+
+    function addReviewer(userId, reviewer){
+        var deferred = q.defer();
+        User.findOne({'_id' : userId}, function(err, user) {
+            user.reviews.create(reviewer);
+        });
+        return deferred.promise;
+    }
 
         function createUser(user){
             var deferred = q.defer();

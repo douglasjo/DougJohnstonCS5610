@@ -27,10 +27,10 @@
                 return user.roles.find(matchRole);
             },
 
-            deleteFavoredReviewer: function(userId, index) {
+            addOrDeleteFavoredReviewer: function(userId, index, bool, user) {
                 var deferred = $q.defer();
                 $http
-                    .put("/api/assignment/user" + userId + index)
+                    .put("/api/assignment/user" + userId + index + bool, user)
                     .then(function(response){
                         deferred.resolve(response);
                     });

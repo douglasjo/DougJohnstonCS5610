@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Browse</title>
+</head>
+
+<body>
+
+<div class="container-fluid" ng-controller="BrowseController">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Admin</h1>
+            <label for="table1">
+                <ul class="nav nav-tabs" ng-init>
+                    <li><a>Current Users</a></li>
+                </ul>
+            </label>
+
+
+            <table id="table1" class="table table-responsive table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Courtesy</th>
+                    <th>Constructiveness</th>
+                    <th>Clarity</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tr ng-repeat="td_user in allUsers track by $index">
+                    <td>{{td_user.Username}}</td>
+                    <td>{{td_user.courtesy}}</td>
+                    <td>{{td_user.constructiveness}}</td>
+                    <td>{{td_user.clarity}}</td>
+                    <td class="form-group">
+                        <button class="btn btn-default" type="submit" ng-click="addUser($index)">
+                            <span class="glyphicon glyphicon-pencil"></span></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

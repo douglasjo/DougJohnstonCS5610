@@ -48,7 +48,11 @@ module.exports = function (app, model) {
 
     app.put('/api/assignment/user/:id', function (req, res) {
         if (req.params["id"] && req.params["index"]) {
-            model.deleteReviewer(userId, req.params["index"]);
+            if (req.params["bool"]){
+                model.addReviewer(userId, req.params["index"], req.body)
+            } else {
+                model.deleteReviewer(userId, req.params["index"], req.body);
+            }
         } else {
             var user_id = req.params["id"];
             var user = req.body;
