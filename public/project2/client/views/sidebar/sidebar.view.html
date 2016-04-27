@@ -5,17 +5,22 @@
             <ul class="nav .navbar-nav .nav-sidebar nav-pills nav-stacked">
                 <li ng-class="{'active' : $location.url() == '/home'}" >
                     <a href="#/home" >Home </a></li>
-                <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="isLoggedIn">
+                <li ng-class="{'active' : $location.url().indexOf('profile') !=-1 }" ng-show="isLoggedIn"
+                ng-click="$rootScope.navigate()">
                     <a href="#/profile" >Profile</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="adminPriv">
+                <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="adminPriv"
+                    ng-click="$rootScope.navigate()">
                     <a href="#/admin" >Admin</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('docs') !=-1 }" ng-show="isLoggedIn">
+                <li ng-class="{'active' : $location.url().indexOf('docs') !=-1 }" ng-show="isLoggedIn"
+                    ng-click="$rootScope.navigate()">
                     <a href="#/docs" >My Docs</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('browse') !=-1 }">
+                <li ng-class="{'active' : $location.url().indexOf('browse') !=-1 }" ng-click="$rootScope.navigate()">
                     <a href="#/docs" >Browse Users</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('shared') !=-1 }" ng-show="isLoggedIn">
+                <li ng-class="{'active' : $location.url().indexOf('shared') !=-1 }" ng-show="isLoggedIn"
+                    ng-click="$rootScope.navigate()">
                     <a href="#/docs" >Shared Docs</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('favored') !=-1 }" ng-show="isLoggedIn">
+                <li ng-class="{'active' : $location.url().indexOf('favored') !=-1 }" ng-show="isLoggedIn"
+                    ng-click="$rootScope.navigate()">
                     <a href="#/docs" >Favored Reviewers</a></li>
             </ul>
         </div>

@@ -9,5 +9,10 @@
                 $rootScope.adminPriv = false;
                 $rootScope.currentUser = {};
                 $rootScope.doc=null;
+                $rootScope.last="/home";
+
+                $rootScope.navigate= function(){
+                        $rootScope.last=$location;
+                    }
             });
 })();
