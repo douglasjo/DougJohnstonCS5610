@@ -1,9 +1,6 @@
-var uuid = require('node-uuid');
+//var uuid = require('node-uuid');
 
 module.exports = function(app, model){
-        //var forms = 'models/form.mock.json';
-    //var forms = require('./form.mock.json');
-    //var forms = require('./models/form.mock.json');
 
         app.get('/api/assignment/form/:formId/field', function(req, res){
             var form = model.getFormById(req.params['formId']);

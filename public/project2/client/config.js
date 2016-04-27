@@ -25,11 +25,11 @@
                     controller: "LoginController"
                 })
                 .when("/forms", {
-                    templateUrl: "views/forms/forms.view.html",
+                    templateUrl: "views/docs/forms.view.html",
                     controller: "FormsController"
                 })
                 .when("/form/:formId/fields", {
-                    templateUrl: "views/forms/fields.view.html",
+                    templateUrl: "views/docs/fields.view.html",
                     controller: "FieldsController"
                 })
                 .otherwise({

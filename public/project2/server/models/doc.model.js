@@ -13,7 +13,11 @@ module.exports=function(mongoose, db) {
             createDoc: createDoc,
             deleteDocById: deleteDocById,
             updateDocById: updateDocById,
-            findDocByTitle: findDocByTitle
+            findDocByTitle: findDocByTitle,
+            deleteReview: deleteReview,
+            createReview: createReview,
+            updateReview: updateReview
+
         };
 
         function getAllDocs() {
@@ -40,9 +44,6 @@ module.exports=function(mongoose, db) {
             return deferred.promise;
         }
 
-        /*
-        might be a problem with this
-         */
         function createDoc(document) {
             var deferred = q.defer();
             Doc.create(page, function(err, doc){
@@ -66,10 +67,12 @@ module.exports=function(mongoose, db) {
 
         function updateDocById(docId, doc) {
             var deferred = q.defer();
-            User.update({_Id: docId}, {userId: doc.userId,
+            Doc.update({_Id: docId}, {userId: doc.userId,
+                sharedWith: doc.sharedWith,
                 title: doc.title,
                 content: doc.content,
                 created: doc.created,
+                reviews: doc.reviews,
                 updated: doc.updated}, function(err, document){
                 deferred.resolve(document);
             });
@@ -80,6 +83,38 @@ module.exports=function(mongoose, db) {
             var deferred = q.defer();
             Doc.find({title: title}, function (err, document){
                 deferred.resolve(document);
+            });
+            return deferred.promise;
+        }
+
+        function deleteReview(docId, reviewId){
+            var deferred = q.defer();
+            Doc.findOne({'_id' : docId}, function(err, document) {
+                for (var i = 0; i <= document.reviews.length; i++) {
+                    if (document.reviews[i]._id == reviewId) {
+                        document.reviews.remove(reviewId);
+                    }
+                }
+            });
+            return deferred.promise;
+        }
+
+        function createReview(docId, review){
+            var deferred = q.defer();
+            Doc.findOne({'_id' : docId}, function(err, document) {
+                document.reviews.create(review);
+            });
+            return deferred.promise;
+        }
+
+        function updateReview(docId, reviewId, review){
+            var deferred = q.defer();
+            Doc.findOne({'_id' : docId}, function(err, document) {
+                for (var i = 0; i <= document.reviews.length; i++) {
+                    if (document.reviews[i]._id == reviewId) {
+                        document.reviews.update(reviewId, review);
+                    }
+                }
             });
             return deferred.promise;
         }

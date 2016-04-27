@@ -65,7 +65,12 @@ module.exports=function(mongoose, db) {
             var deferred = q.defer();
             User.update({_Id: userId}, {firstName: user.firstName,
                 lastName: user.lastName,
+                email: user.email,
                 username: user.username,
+                constructiveness: user.constructiveness,
+                clarity: user.clarity,
+                courtesy: user.courtesy,
+                favoredReviewers: user.favoredReviewers,
                 password: user.password}, function(err, user){
                 deferred.resolve(user);
             });

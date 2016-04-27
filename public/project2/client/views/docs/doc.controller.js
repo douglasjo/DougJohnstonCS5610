@@ -18,8 +18,6 @@
                 "userId": $rootScope.currentUser._id,
                 "_id": (new Date).getTime()
             };
-            //console.log("id is: " + $rootScope.currentUser._id);
-            //console.log("newform is: " + newForm);
             DocService.createDocForUser($rootScope.currentUser._id, newDoc);
             $scope.myDocs = FormService.findAllDocsForUser($rootScope.currentUser._id);
         };
@@ -34,9 +32,6 @@
         $scope.deleteDoc = function($index) {
             var docId = $scope.myDocs[$index]._id;
             DocService.deleteDocById(docId);
-            //console.log($scope.myForms);
-            //console.log($index);
-            //$scope.myForms.splice($index, 1);
         };
 
         $scope.selectDoc = function($index) {
