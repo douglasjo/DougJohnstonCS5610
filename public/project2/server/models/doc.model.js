@@ -16,7 +16,8 @@ module.exports=function(mongoose, db) {
             findDocByTitle: findDocByTitle,
             deleteReview: deleteReview,
             createReview: createReview,
-            updateReview: updateReview
+            updateReview: updateReview,
+            getSharedDocs: getSharedDocs
 
         };
 
@@ -115,6 +116,14 @@ module.exports=function(mongoose, db) {
                         document.reviews.update(reviewId, review);
                     }
                 }
+            });
+            return deferred.promise;
+        }
+
+        function getSharedDocs(userId){
+            var deferred = q.defer();
+            Doc.find({sharedWith: userId}, function(err, document){
+                deferred.resolve(document);
             });
             return deferred.promise;
         }

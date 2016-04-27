@@ -9,6 +9,8 @@ module.exports = function (app, model) {
                 res.send(model.getDocById(req.params['docId']));
             } else if (req.params['userId']) {
                 res.send(model.getDocsByUserId(req.params['userId']));
+            } else if (req.params['bool']){
+                res.send(model.getSharedDocs(req.params['userId']));
             } else {
                 var docs = model.getAllDocs();
                 res.send(docs);

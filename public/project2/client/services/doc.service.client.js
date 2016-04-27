@@ -17,6 +17,16 @@
                 return deferred.promise;
             },
 
+            getSharedDocs: function (userId, bool){
+                var deferred = $q.defer();
+                $http
+                    .get('/api/assignment/user/' + userId + bool)
+                    .then(function(response){
+                        deferred.resolve(response);
+                    });
+                return deferred.promise;
+            },
+
 
             findAllDocsForUser: function (userId) {
                 var deferred = $q.defer();

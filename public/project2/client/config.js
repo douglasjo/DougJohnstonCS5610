@@ -24,13 +24,21 @@
                     templateUrl: "views/users/login.view.html",
                     controller: "LoginController"
                 })
-                .when("/forms", {
-                    templateUrl: "views/docs/forms.view.html",
-                    controller: "FormsController"
+                .when("/docs", {
+                    templateUrl: "views/docs/doc.view.html",
+                    controller: "DocController"
                 })
-                .when("/form/:formId/fields", {
-                    templateUrl: "views/docs/fields.view.html",
-                    controller: "FieldsController"
+                .when("/browse", {
+                    templateUrl: "views/browse/browse.view.html",
+                    controller: "BrowseController"
+                })
+                .when("/shared", {
+                    templateUrl: "views/shared/shared.view.html",
+                    controller: "SharedController"
+                })
+                .when("/favored", {
+                    templateUrl: "views/favored/favored.view.html",
+                    controller: "FavoredController"
                 })
                 .otherwise({
                     redirectTo: "/"

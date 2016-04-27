@@ -9,8 +9,14 @@
                     <a href="#/profile" >Profile</a></li>
                 <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }" ng-show="adminPriv">
                     <a href="#/admin" >Admin</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('forms') !=-1 }" ng-show="isLoggedIn">
-                    <a href="#/forms" >Forms</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('docs') !=-1 }" ng-show="isLoggedIn">
+                    <a href="#/docs" >My Docs</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('browse') !=-1 }" ng-show="isLoggedIn">
+                    <a href="#/docs" >Browse Users</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('shared') !=-1 }" ng-show="isLoggedIn">
+                    <a href="#/docs" >Shared Docs</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('favored') !=-1 }" ng-show="isLoggedIn">
+                    <a href="#/docs" >Favored Reviewers</a></li>
             </ul>
         </div>
     </div>
