@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin</title>
+    <title>Favored Viewers</title>
 </head>
 
 <body>
 
-<div class="container-fluid" ng-controller="AdminController">
+<div class="container-fluid" ng-controller="FavoredController">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Admin</h1>
+            <h1 class="page-header">Favored Viewers</h1>
             <label for="table1">
                 <ul class="nav nav-tabs" ng-init>
-                    <li><a>Current Users</a></li>
+                    <li><a>My Favored Viewers</a></li>
                 </ul>
             </label>
 
@@ -29,20 +29,12 @@
                         <input type="text" class="form-control" id="selectedTitle"
                                ng-model="selectedName">
                     </td>
-                    <td>
-                        <button class="btn btn-default" type="submit" ng-click="addUser()">
-                            <span class="glyphicon glyphicon-plus"></span></button>
-                        <button class="btn btn-default" type="submit" ng-click="updateUser()">
-                            <span class="glyphicon glyphicon-ok"></span></button>
-                    </td>
                 </tr>
                 <tr ng-repeat="td_user in myUsers track by $index">
-                    <td>{{td_user.Username}}</td>
+                    <td>td_user</td>
                     <td class="form-group">
                         <button class="btn btn-default" type="submit" ng-click="deleteUser($index)">
                             <span class="glyphicon glyphicon-remove"></span></button>
-                        <button class="btn btn-default" type="submit" ng-click="selectUser($index)">
-                            <span class="glyphicon glyphicon-pencil"></span></button>
                     </td>
                 </tr>
             </table>

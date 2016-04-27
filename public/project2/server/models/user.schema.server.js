@@ -11,7 +11,7 @@ module.exports = function () {
         constructiveness: [Number],
         courtesy: [Number],
         clarity: [Number],
-        favoredReviewers: [String]
+        reviewers: [String]
     }, {collection: "User"});
 
     return userSchema;

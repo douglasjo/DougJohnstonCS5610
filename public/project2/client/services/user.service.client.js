@@ -27,19 +27,21 @@
                 return user.roles.find(matchRole);
             },
 
-            findUserByCredentials: function(username, password) {
+            deleteFavoredReviewer: function(userId, index) {
                 var deferred = $q.defer();
-
-                var credentials = {username: username, password: password};
-                console.log("client username is: " + credentials.username);
-                console.log("client password is: " + credentials.password);
-                /*$http
-                    .get("/api/assignment/user?username="+ username + "&password="+ password)
+                $http
+                    .put("/api/assignment/user" + userId + index)
                     .then(function(response){
                         deferred.resolve(response);
-                    });*/
+                    });
+                return deferred.promise;
+            },
+
+            findUserByCredentials: function(username, password) {
+                var deferred = $q.defer();
+                var credentials = {username: username, password: password};
                 $http
-                 .get("/api/assignment/test")
+                 .get("/api/assignment/user?username=" + username +"&password=" + password)
                  .then(function(response){
                     console.log("by credentials!");
                     deferred.resolve(response);
