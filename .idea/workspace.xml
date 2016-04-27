@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441ff3f-07cd-4d74-840e-b5b4229a0928" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project2/client/views/forms/fields.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project2/client/views/forms/fields.view.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project2/client/app.js" afterPath="$PROJECT_DIR$/public/project2/client/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project2/client/config.js" afterPath="$PROJECT_DIR$/public/project2/client/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project2/client/index.html" afterPath="$PROJECT_DIR$/public/project2/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project2/client/views/users/login.controller.js" afterPath="$PROJECT_DIR$/public/project2/client/views/users/login.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project2/client/views/users/profile.controller.js" afterPath="$PROJECT_DIR$/public/project2/client/views/users/profile.controller.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project2/server/models/form.model.js" afterPath="$PROJECT_DIR$/public/project2/server/models/doc.model.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project2/server/models/form.schema.server.js" afterPath="$PROJECT_DIR$/public/project2/server/models/doc.schema.server.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project2/server/services/form.service.server.js" afterPath="$PROJECT_DIR$/public/project2/server/services/doc.service.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project2/client/views/users/register.controller.js" afterPath="$PROJECT_DIR$/public/project2/client/views/users/register.controller.js" />
     </list>
     <ignored path="webstorm_init.iws" />
@@ -30,18 +27,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="register.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project2/client/views/users/register.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project2/client/app.js">
+        <entry file="file://$PROJECT_DIR$/public/project2/server/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -50,31 +37,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project2/client/config.js">
+      <file leaf-file-name="doc.service.server.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project2/server/services/doc.service.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.6481481">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project2/client/dashboard.css">
+      <file leaf-file-name="doc.model.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project2/server/models/doc.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/project2/client/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65">
-              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -88,9 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/classProject/views/users/login.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/views/users/login.controller.js" />
-        <option value="$PROJECT_DIR$/public/classProject/views/users/login.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/users/profile.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/services/field.service.client.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/main/main.controller.js" />
@@ -136,9 +110,12 @@
         <option value="$PROJECT_DIR$/public/project2/client/views/users/login.controller.js" />
         <option value="$PROJECT_DIR$/public/project2/client/app.js" />
         <option value="$PROJECT_DIR$/public/project2/client/views/users/profile.controller.js" />
-        <option value="$PROJECT_DIR$/public/project2/client/views/users/register.controller.js" />
         <option value="$PROJECT_DIR$/public/project2/client/config.js" />
         <option value="$PROJECT_DIR$/public/project2/client/index.html" />
+        <option value="$PROJECT_DIR$/public/project2/client/views/users/register.controller.js" />
+        <option value="$PROJECT_DIR$/public/project2/server/services/doc.service.server.js" />
+        <option value="$PROJECT_DIR$/public/project2/server/models/doc.model.js" />
+        <option value="$PROJECT_DIR$/public/project2/server/models/doc.schema.server.js" />
       </list>
     </option>
   </component>
@@ -660,27 +637,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/views/fields/oldform-field.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7631578">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/views/users/login.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="20.458334">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/views/header/header.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/client/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -983,14 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project2/server/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32407406">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project2/client/views/forms/doc.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.05">
@@ -1007,9 +955,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project2/client/views/users/register.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/project2/client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.05">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project2/client/dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project2/client/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1388889">
           <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding />
         </state>
@@ -1023,15 +987,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project2/client/config.js">
+    <entry file="file://$PROJECT_DIR$/public/project2/client/views/users/register.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.6296296">
+          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project2/client/dashboard.css">
+    <entry file="file://$PROJECT_DIR$/public/project2/server/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1039,10 +1003,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project2/client/index.html">
+    <entry file="file://$PROJECT_DIR$/public/project2/server/models/doc.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project2/server/models/doc.schema.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6018519">
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project2/server/services/doc.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6481481">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
