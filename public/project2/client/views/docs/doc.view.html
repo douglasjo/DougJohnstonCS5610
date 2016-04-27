@@ -43,6 +43,7 @@
                             <span class="glyphicon glyphicon-remove"></span></button>
                         <button class="btn btn-default" type="submit" ng-click="selectDoc($index)">
                             <span class="glyphicon glyphicon-pencil"></span></button>
+
                     </td>
                 </tr>
                 <tbody>
@@ -106,6 +107,10 @@
                         </td>
                     </tr>
                 </table>
+                <label for="reviewer">Reviewer</label>
+                <input type="text" id="reviewer" ng-model="revName">
+                <button class="btn btn-default" name="addRev" type="submit" ng-click="addReviewer()">
+                    Add a Reviewer</button>
             </div>
             
             <div class="modal-footer">

@@ -7,6 +7,10 @@
         $scope.selectedDoc= {};
         $scope.myDocs = DocService.findAllDocsForUser($rootScope.currentUser._id);
 
+        $scope.addReviewer = function(){
+            ReviewService.addReviewer($scope.selectedDoc._id, $scope.revName);
+        };
+
         $scope.rateReview = function($index) {
             var review = selectedDoc.reviews[$index];
             var newReview = {
